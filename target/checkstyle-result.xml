@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.42">
+<file name="/home/mika/IdeaProjects/MeerimErmekbaeva/src/main/java/com/epam/tc/hw1/Calculator.java">
+</file>
+<file name="/home/mika/IdeaProjects/MeerimErmekbaeva/src/test/java/com/epam/tc/hw1/DivisionCalculatorTest.java">
+</file>
+<file name="/home/mika/IdeaProjects/MeerimErmekbaeva/src/test/java/com/epam/tc/hw1/SubtractCalculatorTest.java">
+</file>
+<file name="/home/mika/IdeaProjects/MeerimErmekbaeva/src/test/java/com/epam/tc/hw1/SumCalculatorTest.java">
+</file>
+<file name="/home/mika/IdeaProjects/MeerimErmekbaeva/src/test/java/com/epam/tc/hw1/MultiplyCalculatorTest.java">
+</file>
+</checkstyle>
