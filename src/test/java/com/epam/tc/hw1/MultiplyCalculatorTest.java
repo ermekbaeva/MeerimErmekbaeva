@@ -5,8 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class MultiplyCalculatorTest {
-    Calculator calculator = new Calculator();
+public class MultiplyCalculatorTest extends CalculatorBaseTest {
 
     @DataProvider
     public Object[][] multiplyDataProvider() {
