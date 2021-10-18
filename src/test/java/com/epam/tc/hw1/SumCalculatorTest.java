@@ -20,6 +20,7 @@ public class SumCalculatorTest {
 
     @Test(dataProvider = "sumDataProvider")
     public void sumTest(int a, int b, int expected) {
+        System.out.printf("Sum %d + %d test%n", a, b);
         int actual = calculator.sum(a, b);
         assertThat(actual).isEqualTo(expected);
     }

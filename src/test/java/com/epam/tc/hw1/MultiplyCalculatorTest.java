@@ -20,6 +20,7 @@ public class MultiplyCalculatorTest {
 
     @Test(dataProvider = "multiplyDataProvider")
     public void multiplyTest(int a, int b, int expected) {
+        System.out.printf("Multiply %d * %d test%n", a, b);
         int actual = calculator.multiply(a, b);
         assertThat(actual).isEqualTo(expected);
     }

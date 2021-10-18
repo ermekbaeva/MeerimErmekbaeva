@@ -20,6 +20,7 @@ public class DivisionCalculatorTest {
 
     @Test(dataProvider = "divisionDataProvider")
     public void divisionTest(int a, int b, int expected) {
+        System.out.printf("Division %d / %d test%n", a, b);
         int actual = calculator.division(a, b);
         assertThat(actual).isEqualTo(expected);
     }

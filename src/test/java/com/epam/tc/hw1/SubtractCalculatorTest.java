@@ -20,6 +20,7 @@ public class SubtractCalculatorTest {
 
     @Test(dataProvider = "subtractDataProvider")
     public void subtractTest(int a, int b, int expected) {
+        System.out.printf("Subtract %d - %d test%n", a, b);
         int actual = calculator.subtract(a, b);
         assertThat(actual).isEqualTo(expected);
     }
