@@ -23,7 +23,7 @@
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <junit.version>4.12</junit.version>
 
-        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/AllPagesUITestSuite.xml
         </suite.xml.name>
     </properties>
 
@@ -49,29 +49,6 @@
                 </suite.xml.name>
             </properties>
         </profile>
-        <profile>
-            <id>all-calculator-test-suite</id>
-            <properties>
-                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/AllCalculatorTestSuite.xml
-                </suite.xml.name>
-            </properties>
-        </profile>
-        <profile>
-            <id>sum-and-subtract-calculator-test-suite</id>
-            <properties>
-                <suite.xml.name>
-                    ${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
-                </suite.xml.name>
-            </properties>
-        </profile>
-        <profile>
-            <id>multiply-and-division-calculator-test-suite</id>
-            <properties>
-                <suite.xml.name>
-                    ${project.basedir}/src/test/resources/com.epam.tc.hw1/MultiplyAndDivisionCalculatorTestSuite.xml
-                </suite.xml.name>
-            </properties>
-        </profile>
     </profiles>
 
     <dependencies>
@@ -91,13 +68,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>com.calculator</groupId>
-            <artifactId>calculator</artifactId>
-            <version>${calculator.version}</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
-        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
