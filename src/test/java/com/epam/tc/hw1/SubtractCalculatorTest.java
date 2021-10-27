@@ -2,22 +2,12 @@ package com.epam.tc.hw1;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 
 public class SubtractCalculatorTest extends CalculatorBaseTest {
 
-    @DataProvider
-    public Object[][] subtractDataProvider() {
-        return new Object[][]{
-                {5, 2, 3},
-                {11, 10, 1},
-                {27, 9, 18},
-                {53, 15, 38}
-        };
-    }
-
-    @Test(dataProvider = "subtractDataProvider")
+    @Test(dataProviderClass = CalculatorDataProvider.class, dataProvider = "subtractDataProvider")
     public void subtractTest(int a, int b, int expected) {
         System.out.printf("Subtract %d - %d test%n", a, b);
         int actual = calculator.subtract(a, b);
