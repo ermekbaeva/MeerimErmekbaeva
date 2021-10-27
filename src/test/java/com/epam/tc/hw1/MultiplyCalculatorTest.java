@@ -10,6 +10,8 @@ public class MultiplyCalculatorTest extends CalculatorBaseTest {
     public void multiplyTest(int a, int b, int expected) {
         System.out.printf("Multiply %d * %d test%n", a, b);
         int actual = calculator.multiply(a, b);
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual)
+                .as("Failed on multiply %d and %d", a, b)
+                .isEqualTo(expected);
     }
 }
