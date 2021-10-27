@@ -11,6 +11,8 @@ public class SubtractCalculatorTest extends CalculatorBaseTest {
     public void subtractTest(int a, int b, int expected) {
         System.out.printf("Subtract %d - %d test%n", a, b);
         int actual = calculator.subtract(a, b);
-        assertThat(actual).isEqualTo(expected);
+        assertThat(actual)
+                .as("Failed on subtract %d and %d", a, b)
+                .isEqualTo(expected);
     }
 }
