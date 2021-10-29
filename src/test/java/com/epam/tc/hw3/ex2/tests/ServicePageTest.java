@@ -3,6 +3,7 @@ package com.epam.tc.hw3.ex2.tests;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import com.epam.tc.hw3.LoginPage;
 import com.epam.tc.hw3.TestBase;
 import com.epam.tc.hw3.ex2.pages.ServicePage;
 import org.testng.annotations.AfterMethod;
@@ -12,11 +13,13 @@ import org.testng.annotations.Test;
 
 public class ServicePageTest extends TestBase {
     ServicePage servicePage;
+    LoginPage loginPage;
 
     @BeforeMethod
     public void setup() {
         init();
         servicePage = new ServicePage();
+        loginPage = new LoginPage();
     }
 
     @Test
@@ -25,12 +28,11 @@ public class ServicePageTest extends TestBase {
         assertEquals(prop.getProperty("title"), webDriver.getTitle());
 
         //3. Perform login
-        servicePage.clickOnUserIcon();
-        servicePage.login(prop.getProperty("username"), prop.getProperty("password"));
+        loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 
         //4. Assert Username is loggined
-        assertTrue(servicePage.isUserNameDisplayed());
-        assertTrue(servicePage.getUserName().getText()
+        assertTrue(loginPage.isUserNameDisplayed());
+        assertTrue(loginPage.getUserName().getText()
                 .contains(prop.getProperty("fullusername")));
 
         //5. Open through the header menu Service -> Different Elements Page

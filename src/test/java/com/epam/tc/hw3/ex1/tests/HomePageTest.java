@@ -3,6 +3,7 @@ package com.epam.tc.hw3.ex1.tests;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import com.epam.tc.hw3.LoginPage;
 import com.epam.tc.hw3.TestBase;
 import com.epam.tc.hw3.ex1.pages.HomePage;
 import org.testng.annotations.AfterMethod;
@@ -12,11 +13,13 @@ import org.testng.annotations.Test;
 
 public class HomePageTest extends TestBase {
     HomePage homePage;
+    LoginPage loginPage;
 
     @BeforeMethod
     public void setup() {
         init();
         homePage = new HomePage();
+        loginPage = new LoginPage();
     }
 
     @Test
@@ -25,12 +28,11 @@ public class HomePageTest extends TestBase {
         assertEquals(prop.getProperty("title"), webDriver.getTitle());
 
         //3. Perform login
-        homePage.clickOnUserIcon();
-        homePage.login(prop.getProperty("username"), prop.getProperty("password"));
+        loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
 
         //4. Assert Username is loggined
-        assertTrue(homePage.isUserNameDisplayed());
-        assertTrue(homePage.getUserName().getText()
+        assertTrue(loginPage.isUserNameDisplayed());
+        assertTrue(loginPage.getUserName().getText()
                 .contains(prop.getProperty("fullusername")));
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts

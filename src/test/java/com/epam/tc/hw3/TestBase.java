@@ -18,7 +18,7 @@ public class TestBase {
         try {
             prop = new Properties();
             FileInputStream ip = new FileInputStream(System.getProperty("user.dir")
-                    + "/src/test/resources/test.properties");
+                    + "/src/test/resources/com.epam.tc.hw3/test.properties");
             prop.load(ip);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

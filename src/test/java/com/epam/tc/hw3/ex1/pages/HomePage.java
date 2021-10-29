@@ -7,16 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 
 public class HomePage extends TestBase {
-    @FindBy(id = "user-icon")
-    private WebElement userIcon;
-    @FindBy(id = "name")
-    private WebElement userNameInput;
-    @FindBy(id = "password")
-    private WebElement userPasswordInput;
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
-    @FindBy(id = "user-name")
-    private WebElement userName;
     @FindBy(xpath = "//a[text() = 'Home']")
     private WebElement homeButton;
     @FindBy(xpath = "//a[text() = 'Contact form']")
@@ -62,36 +52,6 @@ public class HomePage extends TestBase {
 
     public WebElement getFrameWithButton() {
         return frameWithButton;
-    }
-
-    public void setUserName(String username) {
-        userNameInput.sendKeys(username);
-    }
-
-    public void setUserPassword(String password) {
-        userPasswordInput.sendKeys(password);
-    }
-
-    public void clickOnLoginButton() {
-        loginButton.click();
-    }
-
-    public void clickOnUserIcon() {
-        userIcon.click();
-    }
-
-    public void login(String username, String password) {
-        setUserName(username);
-        setUserPassword(password);
-        clickOnLoginButton();
-    }
-
-    public WebElement getUserName() {
-        return userName;
-    }
-
-    public boolean isUserNameDisplayed() {
-        return userName.isDisplayed();
     }
 
     public boolean isHomeButtonDisplayed() {

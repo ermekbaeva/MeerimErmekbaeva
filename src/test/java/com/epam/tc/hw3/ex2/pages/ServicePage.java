@@ -7,16 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class ServicePage extends TestBase {
-    @FindBy(id = "user-icon")
-    private WebElement userIcon;
-    @FindBy(id = "name")
-    private WebElement userNameInput;
-    @FindBy(id = "password")
-    private WebElement userPasswordInput;
-    @FindBy(id = "login-button")
-    private WebElement loginButton;
-    @FindBy(id = "user-name")
-    private WebElement userName;
     @FindBy(xpath = "//a[contains(text(),'Service')]")
     private WebElement serviceButton;
     @FindBy(xpath = "//a[contains(text(),'Different elements')]")
@@ -32,22 +22,6 @@ public class ServicePage extends TestBase {
 
     public ServicePage() {
         PageFactory.initElements(webDriver, this);
-    }
-
-    public void clickOnUserIcon() {
-        userIcon.click();
-    }
-
-    public void setUserName(String username) {
-        userNameInput.sendKeys(username);
-    }
-
-    public void setUserPassword(String password) {
-        userPasswordInput.sendKeys(password);
-    }
-
-    public void clickOnLoginButton() {
-        loginButton.click();
     }
 
     public void clickOnServiceButton() {
@@ -68,20 +42,6 @@ public class ServicePage extends TestBase {
 
     public void clickOnSelenRadioboxButton() {
         selenRadiobox.click();
-    }
-
-    public void login(String username, String password) {
-        setUserName(username);
-        setUserPassword(password);
-        clickOnLoginButton();
-    }
-
-    public WebElement getUserName() {
-        return userName;
-    }
-
-    public boolean isUserNameDisplayed() {
-        return userName.isDisplayed();
     }
 
     public boolean isWaterCheckboxSelected() {
