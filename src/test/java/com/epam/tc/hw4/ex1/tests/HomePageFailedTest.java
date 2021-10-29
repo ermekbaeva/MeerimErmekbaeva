@@ -3,6 +3,7 @@ package com.epam.tc.hw4.ex1.tests;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import com.epam.tc.hw4.LoginPage;
 import com.epam.tc.hw4.TestBase;
 import com.epam.tc.hw4.ex1.pages.HomePage;
 import io.qameta.allure.Attachment;
@@ -18,11 +19,13 @@ import org.testng.annotations.Test;
 
 public class HomePageFailedTest extends TestBase {
     HomePage homePage;
+    LoginPage loginPage;
 
     @BeforeMethod
     public void setup() {
         init();
         homePage = new HomePage();
+        loginPage = new LoginPage();
     }
 
     @Feature(value = "Homework 4")
@@ -56,14 +59,13 @@ public class HomePageFailedTest extends TestBase {
 
     @Step("Perform login")
     public void userLogin() {
-        homePage.clickOnUserIcon();
-        homePage.login(prop.getProperty("username"), prop.getProperty("password"));
+        loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
     }
 
     @Step("Assert Username is loggined")
     public void checkUserIsLogined() {
-        assertTrue(homePage.isUserNameDisplayed());
-        assertTrue(homePage.getUserName().getText()
+        assertTrue(loginPage.isUserNameDisplayed());
+        assertTrue(loginPage.getUserName().getText()
                 .contains(prop.getProperty("fullusername")));
     }
 

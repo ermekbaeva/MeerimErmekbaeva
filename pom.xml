@@ -39,20 +39,6 @@
                 </suite.xml.name>
             </properties>
         </profile>
-        <profile>
-            <id>home-page-test-suite</id>
-            <properties>
-                <suite.xml.name>${project.basedir}/src/test/resources/HomePageTestSuite.xml
-                </suite.xml.name>
-            </properties>
-        </profile>
-        <profile>
-            <id>service-page-test-suite</id>
-            <properties>
-                <suite.xml.name>${project.basedir}/src/test/resources/ServicePageTestSuite.xml
-                </suite.xml.name>
-            </properties>
-        </profile>
     </profiles>
 
     <dependencies>

@@ -3,6 +3,7 @@ package com.epam.tc.hw4.ex2.tests;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import com.epam.tc.hw4.LoginPage;
 import com.epam.tc.hw4.TestBase;
 import com.epam.tc.hw4.ex2.pages.ServicePage;
 import io.qameta.allure.Feature;
@@ -14,11 +15,13 @@ import org.testng.annotations.Test;
 
 public class ServicePageTest extends TestBase {
     ServicePage servicePage;
+    LoginPage loginPage;
 
     @BeforeMethod
     public void setup() {
         init();
         servicePage = new ServicePage();
+        loginPage = new LoginPage();
     }
 
     @Feature(value = "Homework 4")
@@ -44,14 +47,13 @@ public class ServicePageTest extends TestBase {
 
     @Step("Perform login")
     public void userLogin() {
-        servicePage.clickOnUserIcon();
-        servicePage.login(prop.getProperty("username"), prop.getProperty("password"));
+        loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
     }
 
     @Step("Assert Username is loggined")
     public void checkUserIsLogined() {
-        assertTrue(servicePage.isUserNameDisplayed());
-        assertTrue(servicePage.getUserName().getText()
+        assertTrue(loginPage.isUserNameDisplayed());
+        assertTrue(loginPage.getUserName().getText()
                 .contains(prop.getProperty("fullusername")));
     }
 
