@@ -2,13 +2,13 @@
 <suite name="All Pages Test Suite">
     <test name="Home Page Test">
         <classes>
-            <class name="com.epam.tc.hw3.ex1.tests.HomePageTest"/>
+            <class name="com.epam.tc.hw3.tests.HomePageTest"/>
         </classes>
     </test>
 
     <test name="Service Page Test">
         <classes>
-            <class name="com.epam.tc.hw3.ex2.tests.ServicePageTest"/>
+            <class name="com.epam.tc.hw3.tests.ServicePageTest"/>
         </classes>
     </test>
 </suite>

@@ -1,12 +1,11 @@
-package com.epam.tc.hw3.ex1.pages;
+package com.epam.tc.hw3.pages;
 
-import com.epam.tc.hw3.TestBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class HomePage extends TestBase {
+public class HomePage extends BasePage {
     @FindBy(xpath = "//a[text() = 'Home']")
     private WebElement homeButton;
     @FindBy(xpath = "//a[text() = 'Contact form']")

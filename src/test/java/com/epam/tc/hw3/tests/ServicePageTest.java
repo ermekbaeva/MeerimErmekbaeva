@@ -1,17 +1,17 @@
-package com.epam.tc.hw3.ex2.tests;
+package com.epam.tc.hw3.tests;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-import com.epam.tc.hw3.LoginPage;
-import com.epam.tc.hw3.TestBase;
-import com.epam.tc.hw3.ex2.pages.ServicePage;
+import com.epam.tc.hw3.pages.BasePage;
+import com.epam.tc.hw3.pages.LoginPage;
+import com.epam.tc.hw3.pages.ServicePage;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-public class ServicePageTest extends TestBase {
+public class ServicePageTest extends BasePage {
     ServicePage servicePage;
     LoginPage loginPage;
 

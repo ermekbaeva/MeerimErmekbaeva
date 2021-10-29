@@ -1,11 +1,11 @@
-package com.epam.tc.hw3;
+package com.epam.tc.hw3.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
-public class LoginPage extends TestBase {
+public class LoginPage extends BasePage {
     @FindBy(id = "user-icon")
     private WebElement userIcon;
     @FindBy(id = "name")
