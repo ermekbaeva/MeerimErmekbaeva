@@ -22,11 +22,11 @@ public class HomePageTest extends TestBase {
     public void setup() {
         init();
         homePage = new HomePage();
-        LoginPage loginPage;
+        loginPage = new LoginPage();
     }
 
     @Feature(value = "Homework 4")
-    @Story(value = "Exercise 1")
+    @Story(value = "Exercise 1 home page test")
     @Test
     public void homePageTest() {
         checkBrowserTitle();

@@ -29,7 +29,7 @@ public class HomePageFailedTest extends TestBase {
     }
 
     @Feature(value = "Homework 4")
-    @Story(value = "Exercise 1 Failed")
+    @Story(value = "Exercise 1 Failed home page test")
     @Test
     public void homePageFailedTest() {
         checkBrowserTitle();
@@ -148,7 +148,6 @@ public class HomePageFailedTest extends TestBase {
     @Step("Assert that there is Service in the Left Section is displayed and it has proper text")
     public void checkServiceSideBarMenu() {
         assertTrue(homePage.isServiceSidebarMenuDisplayed());
-        makeScreenshot();
         assertTrue(homePage.serviceSidebarMenuText().contains("Serrrrv"));
     }
 
@@ -162,11 +161,6 @@ public class HomePageFailedTest extends TestBase {
     public void checkElementsSideBarMenu() {
         assertTrue(homePage.isElementsSidebarMenuDisplayed());
         assertTrue(homePage.elementsSidebarMenuText().contains("Elements packs"));
-    }
-
-    @Attachment(type = "image/png")
-    public byte[] makeScreenshot() {
-        return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
     }
 
     @AfterMethod

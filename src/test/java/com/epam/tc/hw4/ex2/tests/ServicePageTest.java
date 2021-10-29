@@ -25,7 +25,7 @@ public class ServicePageTest extends TestBase {
     }
 
     @Feature(value = "Homework 4")
-    @Story(value = "Exercise 2")
+    @Story(value = "Exercise 2 service page test")
     @Test
     public void servicePageTest() {
         checkBrowserTitle();
