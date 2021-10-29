@@ -23,29 +23,38 @@
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <junit.version>4.12</junit.version>
 
-        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/AllPagesUITestSuite.xml
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
         </suite.xml.name>
     </properties>
 
     <profiles>
         <profile>
-            <id>all-pages-test-suite</id>
+            <id>all-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/AllCalculatorTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>sum-and-subtract-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>
+                    ${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>multiply-and-division-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>
+                    ${project.basedir}/src/test/resources/com.epam.tc.hw1/MultiplyAndDivisionCalculatorTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework2-test-suite</id>
             <properties>
                 <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/AllPagesUITestSuite.xml
-                </suite.xml.name>
-            </properties>
-        </profile>
-        <profile>
-            <id>home-page-test-suite</id>
-            <properties>
-                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/HomePageTestSuite.xml
-                </suite.xml.name>
-            </properties>
-        </profile>
-        <profile>
-            <id>service-page-test-suite</id>
-            <properties>
-                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/ServicePageTestSuite.xml
                 </suite.xml.name>
             </properties>
         </profile>
@@ -68,7 +77,6 @@
             <scope>test</scope>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -89,7 +97,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
 
     </dependencies>
 

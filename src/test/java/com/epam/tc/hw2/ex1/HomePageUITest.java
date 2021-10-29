@@ -1,7 +1,9 @@
 package com.epam.tc.hw2.ex1;
 
 import com.epam.tc.hw2.PageBaseTest;
-import java.util.concurrent.TimeUnit;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,27 +15,8 @@ public class HomePageUITest extends PageBaseTest {
     @Test
     public void homePageTest() {
 
-        //1. Open test site by URL
-        webDriver.manage().window().maximize();
-        webDriver.manage().timeouts()
-                .implicitlyWait(10, TimeUnit.SECONDS);
-        webDriver.get(url);
-
         //2. Assert Browser title
         softAssert.assertEquals(webDriver.getTitle(), "Home Page");
-
-        //3. Perform login
-        WebElement userIcon = webDriver.findElement(By.id("user-icon"));
-        userIcon.click();
-
-        WebElement userNameInput = webDriver.findElement(By.id("name"));
-        userNameInput.sendKeys("Roman");
-
-        WebElement userPasswordInput = webDriver.findElement(By.id("password"));
-        userPasswordInput.sendKeys("Jdi1234");
-
-        WebElement enterButton = webDriver.findElement(By.id("login-button"));
-        enterButton.click();
 
         //4. Assert Username is loggined
         WebElement userName = webDriver.findElement(By.id("user-name"));
@@ -42,47 +25,51 @@ public class HomePageUITest extends PageBaseTest {
         softAssert.assertTrue(userName.getText().contains("ROMAN IOVLEV"));
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        WebElement homeButton = webDriver.findElement(By.xpath("//a[text() = 'Home']"));
-        softAssert.assertTrue(homeButton.isDisplayed());
-        softAssert.assertTrue(homeButton.getText().contains("HOME"));
+        List<WebElement> navigationNavBarElements = webDriver
+                .findElements(By.cssSelector(".uui-navigation.nav.navbar-nav.m-l8"));
 
-        WebElement contactFormButton = webDriver.findElement(By.xpath("//a[text() = 'Contact form']"));
-        softAssert.assertTrue(contactFormButton.isDisplayed());
-        softAssert.assertTrue(contactFormButton.getText().contains("CONTACT FORM"));
+        for (WebElement element : navigationNavBarElements
+        ) {
+            softAssert.assertTrue(element.isDisplayed());
+        }
 
-        WebElement serviceButton = webDriver.findElement(By.xpath("//a[contains(text(),'Service')]"));
-        softAssert.assertTrue(serviceButton.isDisplayed());
-        softAssert.assertTrue(serviceButton.getText().contains("SERVICE"));
+        String navigationElementsTextExpected = "HOME CONTACT FORM SERVICE METALS & COLORS";
+        String navigationElementsTextActual = navigationNavBarElements.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList()).toString()
+                .replaceAll("[^a-zA-Z&]", " ").trim();
 
-        WebElement metalsColorsButton = webDriver.findElement(By.xpath("//a[text() = 'Metals & Colors']"));
-        softAssert.assertTrue(metalsColorsButton.isDisplayed());
-        softAssert.assertTrue(metalsColorsButton.getText().contains("METALS & COLORS"));
+        softAssert.assertTrue(navigationElementsTextActual.equals(navigationElementsTextExpected));
 
         //6. Assert that there are 4 images on the Index Page and they are displayed
-        WebElement practiseIcon = webDriver.findElement(By.cssSelector(".icons-benefit.icon-practise"));
-        softAssert.assertTrue(practiseIcon.isDisplayed());
+        List<WebElement> imagesOnIndexPage = webDriver
+                .findElements(By.cssSelector(".benefit-icon"));
 
-        WebElement customIcon = webDriver.findElement(By.cssSelector(".icons-benefit.icon-custom"));
-        softAssert.assertTrue(customIcon.isDisplayed());
-
-        WebElement multiplatformIcon = webDriver.findElement(By.cssSelector(".icons-benefit.icon-multi"));
-        softAssert.assertTrue(multiplatformIcon.isDisplayed());
-
-        WebElement baseIcon = webDriver.findElement(By.cssSelector(".icons-benefit.icon-base"));
-        softAssert.assertTrue(baseIcon.isDisplayed());
+        for (WebElement element : imagesOnIndexPage
+        ) {
+            softAssert.assertTrue(element.isDisplayed());
+        }
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        WebElement practiseText = webDriver.findElement(By.xpath("//span[text() = 'To include good practices']"));
-        softAssert.assertTrue(practiseText.isDisplayed());
+        List<WebElement> textsOnIndexPage = webDriver
+                .findElements(By.cssSelector(".benefit-txt"));
 
-        WebElement customText = webDriver.findElement(By.xpath("//span[text() = 'To be flexible and']"));
-        softAssert.assertTrue(customText.isDisplayed());
+        for (WebElement element : textsOnIndexPage
+        ) {
+            softAssert.assertTrue(element.isDisplayed());
+        }
 
-        WebElement multiplatformText = webDriver.findElement(By.xpath("//span[text() = 'To be multiplatform ']"));
-        softAssert.assertTrue(multiplatformText.isDisplayed());
+        List<String> textOnIndexPageExpected = Arrays
+                .asList("To include good practices\nand ideas from successful\nEPAM project",
+                        "To be flexible and\ncustomizable",
+                        "To be multiplatform",
+                        "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
 
-        WebElement baseText = webDriver.findElement(By.xpath("//span[text() = 'Already have good base']"));
-        softAssert.assertTrue(baseText.isDisplayed());
+        List<String> textOnIndexPageActual = textsOnIndexPage.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
+
+        softAssert.assertTrue(textOnIndexPageExpected.containsAll(textOnIndexPageActual));
 
         //8. Assert that there is the iframe with “Frame Button” exist
         WebElement frameWithButton = webDriver.findElement(By.id("frame"));
@@ -97,25 +84,19 @@ public class HomePageUITest extends PageBaseTest {
         webDriver.switchTo().defaultContent();
 
         //11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        WebElement homeSidebarMenu = webDriver.findElement(By.xpath("//span[text() = 'Home']"));
-        softAssert.assertTrue(homeSidebarMenu.isDisplayed());
-        softAssert.assertTrue(homeSidebarMenu.getText().contains("Home"));
+        List<WebElement> itemsOnSideBar = webDriver
+                .findElements(By.cssSelector(".sidebar-menu.left"));
+        String itemsTextOnSideBarExpected = "Home Contact form Service Metals & Colors Elements packs";
+        for (WebElement element : itemsOnSideBar
+        ) {
+            softAssert.assertTrue(element.isDisplayed());
+        }
+        String itemsTextOnSideBarActual = itemsOnSideBar.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList())
+                .toString().replaceAll("[^a-zA-Z&]", " ").trim();
 
-        WebElement contactFormSidebarMenu = webDriver.findElement(By.xpath("//span[text() = 'Contact form']"));
-        softAssert.assertTrue(contactFormSidebarMenu.isDisplayed());
-        softAssert.assertTrue(contactFormSidebarMenu.getText().contains("Contact form"));
-
-        WebElement serviceSidebarMenu = webDriver.findElement(By.xpath("//span[text() = 'Service']"));
-        softAssert.assertTrue(serviceSidebarMenu.isDisplayed());
-        softAssert.assertTrue(serviceSidebarMenu.getText().contains("Service"));
-
-        WebElement metalsColorsSidebarMenu = webDriver.findElement(By.xpath("//span[text() = 'Metals & Colors']"));
-        softAssert.assertTrue(metalsColorsSidebarMenu.isDisplayed());
-        softAssert.assertTrue(metalsColorsSidebarMenu.getText().contains("Metals & Colors"));
-
-        WebElement elementsSidebarMenu = webDriver.findElement(By.xpath("//span[text() = 'Elements packs']"));
-        softAssert.assertTrue(elementsSidebarMenu.isDisplayed());
-        softAssert.assertTrue(elementsSidebarMenu.getText().contains("Elements packs"));
+        softAssert.assertTrue(itemsTextOnSideBarExpected.equals(itemsTextOnSideBarActual));
 
         softAssert.assertAll();
     }
