@@ -36,6 +36,7 @@ public class LoginPage extends TestBase {
     public void clickOnUserIcon() {
         userIcon.click();
     }
+
     public WebElement getUserName() {
         return userName;
     }
