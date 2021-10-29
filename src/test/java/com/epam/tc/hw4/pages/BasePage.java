@@ -1,4 +1,4 @@
-package com.epam.tc.hw4;
+package com.epam.tc.hw4.pages;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.io.FileInputStream;
@@ -10,11 +10,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-public class TestBase {
+public class BasePage {
     public static WebDriver webDriver;
     public static Properties prop;
 
-    public TestBase() {
+    public BasePage() {
         try {
             prop = new Properties();
             FileInputStream ip = new FileInputStream(System.getProperty("user.dir")

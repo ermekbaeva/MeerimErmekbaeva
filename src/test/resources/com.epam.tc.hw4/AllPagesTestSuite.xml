@@ -6,19 +6,19 @@
 
     <test name="Home Page Test">
         <classes>
-            <class name="com.epam.tc.hw4.ex1.tests.HomePageTest"/>
+            <class name="com.epam.tc.hw4.tests.HomePageTest"/>
         </classes>
     </test>
 
     <test name="Home Page Failed Test">
         <classes>
-            <class name="com.epam.tc.hw4.ex1.tests.HomePageFailedTest"/>
+            <class name="com.epam.tc.hw4.tests.HomePageFailedTest"/>
         </classes>
     </test>
 
     <test name="Service Page Test">
         <classes>
-            <class name="com.epam.tc.hw4.ex2.tests.ServicePageTest"/>
+            <class name="com.epam.tc.hw4.tests.ServicePageTest"/>
         </classes>
     </test>
 </suite>

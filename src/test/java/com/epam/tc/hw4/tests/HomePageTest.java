@@ -1,11 +1,11 @@
-package com.epam.tc.hw4.ex1.tests;
+package com.epam.tc.hw4.tests;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-import com.epam.tc.hw4.LoginPage;
-import com.epam.tc.hw4.TestBase;
-import com.epam.tc.hw4.ex1.pages.HomePage;
+import com.epam.tc.hw4.pages.HomePage;
+import com.epam.tc.hw4.pages.LoginPage;
+import com.epam.tc.hw4.pages.BasePage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-public class HomePageTest extends TestBase {
+public class HomePageTest extends BasePage {
     HomePage homePage;
     LoginPage loginPage;
 

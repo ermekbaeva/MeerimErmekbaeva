@@ -1,23 +1,20 @@
-package com.epam.tc.hw4.ex1.tests;
+package com.epam.tc.hw4.tests;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
-import com.epam.tc.hw4.LoginPage;
-import com.epam.tc.hw4.TestBase;
-import com.epam.tc.hw4.ex1.pages.HomePage;
-import io.qameta.allure.Attachment;
+import com.epam.tc.hw4.pages.HomePage;
+import com.epam.tc.hw4.pages.LoginPage;
+import com.epam.tc.hw4.pages.BasePage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-public class HomePageFailedTest extends TestBase {
+public class HomePageFailedTest extends BasePage {
     HomePage homePage;
     LoginPage loginPage;
 

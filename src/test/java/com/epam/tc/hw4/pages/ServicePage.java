@@ -1,12 +1,11 @@
-package com.epam.tc.hw4.ex2.pages;
+package com.epam.tc.hw4.pages;
 
-import com.epam.tc.hw4.TestBase;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class ServicePage extends TestBase {
+public class ServicePage extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'Service')]")
     private WebElement serviceButton;
     @FindBy(xpath = "//a[contains(text(),'Different elements')]")
