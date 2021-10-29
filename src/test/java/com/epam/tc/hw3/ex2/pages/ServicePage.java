@@ -21,11 +21,11 @@ public class ServicePage extends TestBase {
     private WebElement serviceButton;
     @FindBy(xpath = "//a[contains(text(),'Different elements')]")
     private WebElement differentElementsButton;
-    @FindBy(xpath = "//label[@class='label-checkbox'][1]/input")
+    @FindBy(xpath = "//*[text()[contains(.,'Water')]]/input")
     private WebElement waterCheckbox;
-    @FindBy(xpath = "//label[@class='label-checkbox'][3]/input")
+    @FindBy(xpath = "//*[text()[contains(.,'Wind')]]/input")
     private WebElement windCheckbox;
-    @FindBy(xpath = "//label[@class='label-radio'][4]/input")
+    @FindBy(xpath = "//*[text()[contains(.,'Selen')]]/input")
     private WebElement selenRadiobox;
     @FindBy(xpath = "//select[@class='uui-form-element']")
     private WebElement colorsDropDownMenu;
