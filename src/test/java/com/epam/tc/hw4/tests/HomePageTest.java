@@ -3,9 +3,9 @@ package com.epam.tc.hw4.tests;
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
 
+import com.epam.tc.hw4.pages.BasePage;
 import com.epam.tc.hw4.pages.HomePage;
 import com.epam.tc.hw4.pages.LoginPage;
-import com.epam.tc.hw4.pages.BasePage;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;

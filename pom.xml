@@ -27,7 +27,7 @@
         <reportVersion.version>2.10.0</reportVersion.version>
         <allure-commandline.version>2.15.0</allure-commandline.version>
 
-        <suite.xml.name>${project.basedir}/src/test/resources/AllPagesTestSuite.xml
+        <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw4/AllPagesTestSuite.xml
         </suite.xml.name>
     </properties>
 
@@ -35,7 +35,7 @@
         <profile>
             <id>all-pages-test-suite</id>
             <properties>
-                <suite.xml.name>${project.basedir}/src/test/resources/AllPagesTestSuite.xml
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw4/AllPagesTestSuite.xml
                 </suite.xml.name>
             </properties>
         </profile>
