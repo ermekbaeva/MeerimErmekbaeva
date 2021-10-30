@@ -18,9 +18,9 @@
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <assertj-core.version>3.21.0</assertj-core.version>
-        <selenium-java.version>4.0.0</selenium-java.version>
-        <webdrivermanager.version>5.0.2</webdrivermanager.version>
-        <junit.version>4.13.2</junit.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <junit.version>4.12</junit.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure-testng.version>2.15.0</allure-testng.version>
         <allure-maven.version>2.10.0</allure-maven.version>
@@ -33,7 +33,44 @@
 
     <profiles>
         <profile>
-            <id>all-pages-test-suite</id>
+            <id>all-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/AllCalculatorTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>sum-and-subtract-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>
+                    ${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>multiply-and-division-calculator-test-suite</id>
+            <properties>
+                <suite.xml.name>
+                    ${project.basedir}/src/test/resources/com.epam.tc.hw1/MultiplyAndDivisionCalculatorTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework2-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/AllPagesUITestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework3-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw3/AllPagesTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-test-suite-homework4</id>
             <properties>
                 <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw4/AllPagesTestSuite.xml
                 </suite.xml.name>
