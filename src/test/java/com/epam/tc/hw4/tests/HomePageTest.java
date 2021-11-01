@@ -32,14 +32,21 @@ public class HomePageTest extends BasePage {
         checkBrowserTitle();
         userLogin();
         checkUserIsLogined();
-        checkNavigationBar();
+        checkHomeButton();
+        checkContactFormButton();
+        checkServiceButton();
+        checkMetalsColorsButton();
         checkImagesOnIndexPage();
         checkTextsOnIndexPage();
         checkFrameWithButton();
         switchToFrameWithButton();
         checkButtonInFrame();
         switchToOriginalWindow();
-        checkItemsOnSideBarSideBarMenu();
+        checkHomeSideBarMenu();
+        checkContactFormSideBarMenu();
+        checkServiceSideBarMenu();
+        checkMetalsColorsSideBarMenu();
+        checkElementsSideBarMenu();
     }
 
     @Step("Assert Browser title")
@@ -59,22 +66,48 @@ public class HomePageTest extends BasePage {
                 .contains(prop.getProperty("fullusername")));
     }
 
-    @Step("Assert that there are 4 items on the header "
-            + "section are displayed and they have proper texts")
-    public void checkNavigationBar() {
-        assertTrue(homePage.isNavigationBarElementsDisplayed());
-        assertTrue(homePage.navBarHaveProperText());
+    @Step("Assert that there is Home item on the header "
+            + "section is displayed and it has proper text")
+    public void checkHomeButton() {
+        assertTrue(homePage.isHomeButtonDisplayed());
+        assertTrue(homePage.homeButtonText().contains("HOME"));
+    }
+
+    @Step("Assert that there is Contact Form item on the header "
+            + "section is displayed and it has proper text")
+    public void checkContactFormButton() {
+        assertTrue(homePage.isContactFormButtonDisplayed());
+        assertTrue(homePage.contactFormButtonText().contains("CONTACT FORM"));
+    }
+
+    @Step("Assert that there is Service item on the header "
+            + "section is displayed and it has proper text")
+    public void checkServiceButton() {
+        assertTrue(homePage.isServiceButtonDisplayed());
+        assertTrue(homePage.serviceButtonText().contains("SERVICE"));
+    }
+
+    @Step("Assert that there is Metals&Colors item on the header "
+            + "section is displayed and it has proper text")
+    public void checkMetalsColorsButton() {
+        assertTrue(homePage.isMetalsColorsButtonDisplayed());
+        assertTrue(homePage.metalsColorsButtonText().contains("METALS & COLORS"));
     }
 
     @Step("Assert that there are 4 images on the Index Page and they are displayed")
     public void checkImagesOnIndexPage() {
-        assertTrue(homePage.isImagesOnIndexPageDisplayed());
+        assertTrue(homePage.isPractiseIconDisplayed());
+        assertTrue(homePage.isCustomIconDisplayed());
+        assertTrue(homePage.isMultiplatformIconDisplayed());
+        assertTrue(homePage.isBaseIconDisplayed());
     }
 
     @Step("Assert that there are 4 texts on the Index Page under icons and they have proper text")
     public void checkTextsOnIndexPage() {
-        assertTrue(homePage.isTextsOnIndexPageDisplayed());
-        assertTrue(homePage.textOnIndexHaveProperText());
+        assertTrue(homePage.isPractiseTextDisplayed());
+        assertTrue(homePage.isCustomTextDisplayed());
+        assertTrue(homePage.isMultiplatformTextDisplayed());
+        assertTrue(homePage.isBaseTextDisplayed());
     }
 
     @Step("Assert that there is the iframe with “Frame Button” exist")
@@ -97,11 +130,34 @@ public class HomePageTest extends BasePage {
         webDriver.switchTo().defaultContent();
     }
 
-    @Step("Assert that there are 5 items in the "
-            + "Left Section are displayed and they have proper text")
-    public void checkItemsOnSideBarSideBarMenu() {
-        assertTrue(homePage.isItemsOnSideBarDisplayed());
-        assertTrue(homePage.sideBarHaveProperText());
+    @Step("Assert that there is Home in the Left Section is displayed and it has proper text")
+    public void checkHomeSideBarMenu() {
+        assertTrue(homePage.isHomeSidebarMenuDisplayed());
+        assertTrue(homePage.homeSidebarMenuText().contains("Home"));
+    }
+
+    @Step("Assert that there is ContactForm in the Left Section is displayed and it has proper text")
+    public void checkContactFormSideBarMenu() {
+        assertTrue(homePage.isContactFormSidebarMenuDisplayed());
+        assertTrue(homePage.contactFormSidebarMenuText().contains("Contact form"));
+    }
+
+    @Step("Assert that there is Service in the Left Section is displayed and it has proper text")
+    public void checkServiceSideBarMenu() {
+        assertTrue(homePage.isServiceSidebarMenuDisplayed());
+        assertTrue(homePage.serviceSidebarMenuText().contains("Service"));
+    }
+
+    @Step("Assert that there is MetalsColors in the Left Section is displayed and it has proper text")
+    public void checkMetalsColorsSideBarMenu() {
+        assertTrue(homePage.isMetalsColorsSidebarDisplayed());
+        assertTrue(homePage.metalsColorsSidebarMenuText().contains("Metals & Colors"));
+    }
+
+    @Step("Assert that there is Elements in the Left Section is displayed and it has proper text")
+    public void checkElementsSideBarMenu() {
+        assertTrue(homePage.isElementsSidebarMenuDisplayed());
+        assertTrue(homePage.elementsSidebarMenuText().contains("Elements packs"));
     }
 
     @AfterMethod
