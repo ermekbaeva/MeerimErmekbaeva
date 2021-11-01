@@ -1,48 +1,32 @@
 package com.epam.tc.hw4.pages;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage {
-    @FindBy(xpath = "//a[text() = 'Home']")
-    private WebElement homeButton;
-    @FindBy(xpath = "//a[text() = 'Contact form']")
-    private WebElement contactFormButton;
-    @FindBy(xpath = "//a[contains(text(),'Service')]")
-    private WebElement serviceButton;
-    @FindBy(xpath = "//a[text() = 'Metals & Colors']")
-    private WebElement metalsColorsButton;
-    @FindBy(css = ".icons-benefit.icon-practise")
-    private WebElement practiseIcon;
-    @FindBy(css = ".icons-benefit.icon-custom")
-    private WebElement customIcon;
-    @FindBy(css = ".icons-benefit.icon-multi")
-    private WebElement multiplatformIcon;
-    @FindBy(css = ".icons-benefit.icon-base")
-    private WebElement baseIcon;
-    @FindBy(xpath = "//span[text() = 'To include good practices']")
-    private WebElement practiseText;
-    @FindBy(xpath = "//span[text() = 'To be flexible and']")
-    private WebElement customText;
-    @FindBy(xpath = "//span[text() = 'To be multiplatform ']")
-    private WebElement multiplatformText;
-    @FindBy(xpath = "//span[text() = 'Already have good base']")
-    private WebElement baseText;
     @FindBy(id = "frame")
     private WebElement frameWithButton;
     @FindBy(id = "frame-button")
     private WebElement buttonFrame;
-    @FindBy(xpath = "//span[text() = 'Home']")
-    private WebElement homeSidebarMenu;
-    @FindBy(xpath = "//span[text() = 'Contact form']")
-    private WebElement contactFormSidebarMenu;
-    @FindBy(xpath = "//span[text() = 'Service']")
-    private WebElement serviceSidebarMenu;
-    @FindBy(xpath = "//span[text() = 'Metals & Colors']")
-    private WebElement metalsColorsSidebarMenu;
-    @FindBy(xpath = "//span[text() = 'Elements packs']")
-    private WebElement elementsSidebarMenu;
+    @FindBy(css = ".uui-navigation.nav.navbar-nav.m-l8")
+    private List<WebElement> navigationNavBarElements;
+    @FindBy(css = ".benefit-icon")
+    private List<WebElement> imagesOnIndexPage;
+    @FindBy(css = ".benefit-txt")
+    private List<WebElement> textsOnIndexPage;
+    @FindBy(css = ".sidebar-menu.left")
+    private List<WebElement> itemsOnSideBar;
+    private String navigationElementsTextExpected = "HOME CONTACT FORM SERVICE METALS & COLORS";
+    private List<String> textOnIndexPageExpected = Arrays
+            .asList("To include good practices\nand ideas from successful\nEPAM project",
+                    "To be flexible and\ncustomizable",
+                    "To be multiplatform",
+                    "Already have good base\n(about 20 internal and\nsome external projects),\nwish to get more…");
+    private String itemsTextOnSideBarExpected = "Home Contact form Service Metals & Colors Elements packs";
 
     public HomePage() {
         PageFactory.initElements(webDriver, this);
@@ -52,52 +36,40 @@ public class HomePage extends BasePage {
         return frameWithButton;
     }
 
-    public boolean isHomeButtonDisplayed() {
-        return homeButton.isDisplayed();
+    public boolean isNavigationBarElementsDisplayed() {
+        Boolean isElementsDisplayed = false;
+        for (WebElement element : navigationNavBarElements
+        ) {
+            isElementsDisplayed = element.isDisplayed();
+        }
+        return isElementsDisplayed;
     }
 
-    public boolean isContactFormButtonDisplayed() {
-        return contactFormButton.isDisplayed();
+    public boolean isImagesOnIndexPageDisplayed() {
+        Boolean isElementsDisplayed = false;
+        for (WebElement element : textsOnIndexPage
+        ) {
+            isElementsDisplayed = element.isDisplayed();
+        }
+        return isElementsDisplayed;
     }
 
-    public boolean isServiceButtonDisplayed() {
-        return serviceButton.isDisplayed();
+    public boolean isTextsOnIndexPageDisplayed() {
+        Boolean isElementsDisplayed = false;
+        for (WebElement element : imagesOnIndexPage
+        ) {
+            isElementsDisplayed = element.isDisplayed();
+        }
+        return isElementsDisplayed;
     }
 
-    public boolean isMetalsColorsButtonDisplayed() {
-        return metalsColorsButton.isDisplayed();
-    }
-
-    public boolean isPractiseIconDisplayed() {
-        return practiseIcon.isDisplayed();
-    }
-
-    public boolean isCustomIconDisplayed() {
-        return customIcon.isDisplayed();
-    }
-
-    public boolean isMultiplatformIconDisplayed() {
-        return multiplatformIcon.isDisplayed();
-    }
-
-    public boolean isBaseIconDisplayed() {
-        return baseIcon.isDisplayed();
-    }
-
-    public boolean isPractiseTextDisplayed() {
-        return practiseText.isDisplayed();
-    }
-
-    public boolean isCustomTextDisplayed() {
-        return customText.isDisplayed();
-    }
-
-    public boolean isMultiplatformTextDisplayed() {
-        return multiplatformText.isDisplayed();
-    }
-
-    public boolean isBaseTextDisplayed() {
-        return baseText.isDisplayed();
+    public boolean isItemsOnSideBarDisplayed() {
+        Boolean isElementsDisplayed = false;
+        for (WebElement element : itemsOnSideBar
+        ) {
+            isElementsDisplayed = element.isDisplayed();
+        }
+        return isElementsDisplayed;
     }
 
     public boolean isFrameWithButtonDisplayed() {
@@ -108,60 +80,30 @@ public class HomePage extends BasePage {
         return buttonFrame.isDisplayed();
     }
 
-    public boolean isHomeSidebarMenuDisplayed() {
-        return homeSidebarMenu.isDisplayed();
+    public boolean navBarHaveProperText() {
+        String navigationElementsTextActual = navigationNavBarElements.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList()).toString()
+                .replaceAll("[^a-zA-Z&]", " ").trim();
+
+        return navigationElementsTextActual.equals(navigationElementsTextExpected);
     }
 
-    public boolean isContactFormSidebarMenuDisplayed() {
-        return contactFormSidebarMenu.isDisplayed();
+    public boolean textOnIndexHaveProperText() {
+        List<String> textOnIndexPageActual = textsOnIndexPage.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
+
+        return textOnIndexPageExpected.containsAll(textOnIndexPageActual);
     }
 
-    public boolean isServiceSidebarMenuDisplayed() {
-        return serviceSidebarMenu.isDisplayed();
-    }
+    public boolean sideBarHaveProperText() {
+        String itemsTextOnSideBarActual = itemsOnSideBar.stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList())
+                .toString().replaceAll("[^a-zA-Z&]", " ").trim();
 
-    public boolean isMetalsColorsSidebarDisplayed() {
-        return metalsColorsSidebarMenu.isDisplayed();
-    }
-
-    public boolean isElementsSidebarMenuDisplayed() {
-        return elementsSidebarMenu.isDisplayed();
-    }
-
-    public String homeButtonText() {
-        return homeButton.getText();
-    }
-
-    public String contactFormButtonText() {
-        return contactFormButton.getText();
-    }
-
-    public String serviceButtonText() {
-        return serviceButton.getText();
-    }
-
-    public String metalsColorsButtonText() {
-        return metalsColorsButton.getText();
-    }
-
-    public String homeSidebarMenuText() {
-        return homeSidebarMenu.getText();
-    }
-
-    public String contactFormSidebarMenuText() {
-        return contactFormSidebarMenu.getText();
-    }
-
-    public String serviceSidebarMenuText() {
-        return serviceSidebarMenu.getText();
-    }
-
-    public String metalsColorsSidebarMenuText() {
-        return metalsColorsSidebarMenu.getText();
-    }
-
-    public String elementsSidebarMenuText() {
-        return elementsSidebarMenu.getText();
+        return itemsTextOnSideBarExpected.equals(itemsTextOnSideBarActual);
     }
 
 }
