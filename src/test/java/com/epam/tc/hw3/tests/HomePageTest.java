@@ -36,29 +36,15 @@ public class HomePageTest extends BasePage {
                 .contains(prop.getProperty("fullusername")));
 
         //5. Assert that there are 4 items on the header section are displayed and they have proper texts
-        assertTrue(homePage.isHomeButtonDisplayed());
-        assertTrue(homePage.homeButtonText().contains("HOME"));
-
-        assertTrue(homePage.isContactFormButtonDisplayed());
-        assertTrue(homePage.contactFormButtonText().contains("CONTACT FORM"));
-
-        assertTrue(homePage.isServiceButtonDisplayed());
-        assertTrue(homePage.serviceButtonText().contains("SERVICE"));
-
-        assertTrue(homePage.isMetalsColorsButtonDisplayed());
-        assertTrue(homePage.metalsColorsButtonText().contains("METALS & COLORS"));
+        assertTrue(homePage.isNavigationBarElementsDisplayed());
+        assertTrue(homePage.navBarHaveProperText());
 
         //6. Assert that there are 4 images on the Index Page and they are displayed
-        assertTrue(homePage.isPractiseIconDisplayed());
-        assertTrue(homePage.isCustomIconDisplayed());
-        assertTrue(homePage.isMultiplatformIconDisplayed());
-        assertTrue(homePage.isBaseIconDisplayed());
+        assertTrue(homePage.isImagesOnIndexPageDisplayed());
 
         //7. Assert that there are 4 texts on the Index Page under icons and they have proper text
-        assertTrue(homePage.isPractiseTextDisplayed());
-        assertTrue(homePage.isCustomTextDisplayed());
-        assertTrue(homePage.isMultiplatformTextDisplayed());
-        assertTrue(homePage.isBaseTextDisplayed());
+        assertTrue(homePage.isTextsOnIndexPageDisplayed());
+        assertTrue(homePage.textOnIndexHaveProperText());
 
         //8. Assert that there is the iframe with “Frame Button” exist
         assertTrue(homePage.isFrameWithButtonDisplayed());
@@ -71,20 +57,8 @@ public class HomePageTest extends BasePage {
         webDriver.switchTo().defaultContent();
 
         //11. Assert that there are 5 items in the Left Section are displayed and they have proper text
-        assertTrue(homePage.isHomeSidebarMenuDisplayed());
-        assertTrue(homePage.homeSidebarMenuText().contains("Home"));
-
-        assertTrue(homePage.isContactFormSidebarMenuDisplayed());
-        assertTrue(homePage.contactFormSidebarMenuText().contains("Contact form"));
-
-        assertTrue(homePage.isServiceSidebarMenuDisplayed());
-        assertTrue(homePage.serviceSidebarMenuText().contains("Service"));
-
-        assertTrue(homePage.isMetalsColorsSidebarDisplayed());
-        assertTrue(homePage.metalsColorsSidebarMenuText().contains("Metals & Colors"));
-
-        assertTrue(homePage.isElementsSidebarMenuDisplayed());
-        assertTrue(homePage.elementsSidebarMenuText().contains("Elements packs"));
+        assertTrue(homePage.isItemsOnSideBarDisplayed());
+        assertTrue(homePage.sideBarHaveProperText());
     }
 
     @AfterMethod
