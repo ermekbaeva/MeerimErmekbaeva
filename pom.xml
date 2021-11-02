@@ -17,6 +17,7 @@
         <testng.version>7.4.0</testng.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <calculator.version>1.0</calculator.version>
         <assertj-core.version>3.21.0</assertj-core.version>
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
@@ -105,6 +106,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.calculator</groupId>
+            <artifactId>calculator</artifactId>
+            <version>${calculator.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+        </dependency>
 
     </dependencies>
 
