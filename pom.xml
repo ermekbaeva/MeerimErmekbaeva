@@ -70,7 +70,7 @@
             </properties>
         </profile>
         <profile>
-            <id>all-pages-test-suite-homework4</id>
+            <id>all-pages-homework4-test-suite</id>
             <properties>
                 <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw4/AllPagesTestSuite.xml
                 </suite.xml.name>
