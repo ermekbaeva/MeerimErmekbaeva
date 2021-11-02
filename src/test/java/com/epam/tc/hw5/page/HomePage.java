@@ -7,4 +7,8 @@ public class HomePage extends AbstractBasePage {
     public HomePage(WebDriver driver) {
         super(driver);
     }
+
+    public void open() {
+        open("");
+    }
 }

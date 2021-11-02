@@ -12,7 +12,7 @@ public class AbstractComponent {
 
     protected AbstractComponent(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 10L);
+        wait = new WebDriverWait(driver, 5L);
         PageFactory.initElements(driver, this);
         actions = new Actions(driver);
     }

@@ -32,7 +32,7 @@ public class LoginComponent extends AbstractComponent {
         wait.until(visibilityOf(userPasswordInput)).sendKeys(password);
     }
 
-    public void clickToSearchButton() {
+    public void clickToLoginButton() {
         wait.until(elementToBeClickable(loginButton)).click();
     }
 }

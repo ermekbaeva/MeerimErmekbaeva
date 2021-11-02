@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CucumberHooks {
     private WebDriver driver;
-    //    public static WebDriver driver;
 
     @Before
     public void setUp() {

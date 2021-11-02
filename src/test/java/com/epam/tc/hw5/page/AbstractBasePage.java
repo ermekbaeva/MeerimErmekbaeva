@@ -14,15 +14,21 @@ public class AbstractBasePage extends AbstractComponent {
         loginComponent = new LoginComponent(driver);
     }
 
+    public void clickToUserIconButton() {
+        loginComponent.clickToUserIconButton();
+    }
+
     public void sendKeysToLoginInputField(String username, String password) {
         loginComponent.sendKeysToLoginInputField(username, password);
     }
 
     public void clickToLoginButton() {
-        header.clickToLoginButton();
+        loginComponent.clickToLoginButton();
     }
 
     protected void open(String url) {
         driver.navigate().to(BASE_URL + url);
     }
+
+
 }
