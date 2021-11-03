@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.page.component;
+package com.epam.tc.hw5.page;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
@@ -7,7 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginComponent extends AbstractComponent {
+
+public class LoginPage extends AbstractBasePage {
     @FindBy(id = "user-icon")
     private WebElement userIcon;
     @FindBy(id = "name")
@@ -19,7 +20,7 @@ public class LoginComponent extends AbstractComponent {
     @FindBy(id = "user-name")
     private WebElement userName;
 
-    public LoginComponent(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         super(driver);
     }
 

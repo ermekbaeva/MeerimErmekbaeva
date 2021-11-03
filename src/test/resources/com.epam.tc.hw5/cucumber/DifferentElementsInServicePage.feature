@@ -2,9 +2,9 @@ Feature: Service elements
 
   Scenario: Select service elements
     Given I open Jdi test site
-    And I login as user "Roman Iovlev"
-    And I click on "Service" button in Header
-    And I click on "Different Elements Page" button in Service dropdown
+    And I login as user 'Roman Iovlev'
+    And I click on 'Service' button in Header
+    And I click on 'Different Elements Page' button in Service dropdown
     When I select 'water' checkbox
     And I select 'wind' checkbox
     And I select 'selen' radiobutton
