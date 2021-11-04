@@ -1,7 +1,7 @@
 Feature: Service user table
 
   Scenario: User Table Page test
-    Given I open JDI GitHub site
+    Given I open Jdi test site
     And I login as user "Roman Iovlev"
     When I click on "Service" button in Header
     And I click on "User Table" button in Service dropdown

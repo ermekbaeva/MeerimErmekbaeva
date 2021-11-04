@@ -1,14 +1,13 @@
-package com.epam.tc.hw5.page;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
+package com.epam.tc.hw5.cucumber.page;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class AbstractBasePage {
@@ -21,13 +20,11 @@ public class AbstractBasePage {
 
     protected AbstractBasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, 5L);
-        PageFactory.initElements(driver, this);
+        /*wait = new WebDriverWait(driver, 5L);
+        PageFactory.initElements(driver, this);*/
         actions = new Actions(driver);
         loginPage = new LoginPage(driver);
-    }
 
-    protected AbstractBasePage() {
         try {
             prop = new Properties();
             FileInputStream ip = new FileInputStream(System.getProperty("user.dir")
@@ -52,12 +49,8 @@ public class AbstractBasePage {
         loginPage.clickToLoginButton();
     }
 
-    public void loginUser() {
-
-    }
-
-    protected void open(String url) {
-        driver.navigate().to(BASE_URL + url);
+    public void openHomePage() {
+        driver.navigate().to(BASE_URL);
     }
 
 }

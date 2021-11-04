@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.page;
+package com.epam.tc.hw5.cucumber.page;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;

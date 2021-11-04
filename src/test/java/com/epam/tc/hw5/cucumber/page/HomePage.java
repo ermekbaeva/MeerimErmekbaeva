@@ -1,10 +1,11 @@
-package com.epam.tc.hw5.page;
+package com.epam.tc.hw5.cucumber.page;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class HomePage extends AbstractBasePage {
     @FindBy(xpath = "//a[contains(text(),'Service')]")
@@ -19,7 +20,7 @@ public class HomePage extends AbstractBasePage {
     }
 
     public void open() {
-        open("");
+        openHomePage();
     }
 
     public void clickToServiceHeaderMenu() {

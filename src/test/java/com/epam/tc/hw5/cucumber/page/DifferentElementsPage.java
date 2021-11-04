@@ -1,10 +1,12 @@
-package com.epam.tc.hw5.page;
+package com.epam.tc.hw5.cucumber.page;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class DifferentElementsPage extends AbstractBasePage {
     @FindBy(xpath = "//a[contains(text(),'Service')]")
@@ -53,6 +55,25 @@ public class DifferentElementsPage extends AbstractBasePage {
     }
 
     public void clickYellowInDropdownMenu() {
-        wait.until(elementToBeClickable(colorsDropDownMenu)).click();
+        wait.until(elementToBeClickable(colorsDropDownMenu));
+        Select colorSelect = new Select(colorsDropDownMenu);
+        colorSelect.selectByVisibleText("Yellow");
+    }
+
+    public boolean isWaterCheckboxSelected() {
+        return colorsDropDownMenu.isSelected();
+    }
+
+    public boolean isWindCheckboxSelected() {
+        return colorsDropDownMenu.isSelected();
+    }
+
+    public boolean isSelenRadiobuttonSelected() {
+        return colorsDropDownMenu.isSelected();
+    }
+
+    public String isColorsDropDownMenuSelected() {
+        Select colorSelect = new Select(colorsDropDownMenu);
+        return colorSelect.getFirstSelectedOption().getText();
     }
 }

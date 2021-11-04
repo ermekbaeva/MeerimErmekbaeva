@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.context;
+package com.epam.tc.hw5.cucumber.context;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ public class TestContext {
 
     private Map<String, Object> context = new HashMap<>();
 
-    private TestContext(){
+    private TestContext() {
     }
 
     public <T> T getObject(String key) {

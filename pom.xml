@@ -60,6 +60,13 @@
                 </suite.xml.name>
             </properties>
         </profile>
+        <profile>
+            <id>all-pages-homework5-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw5/CucumberHomework5TestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
