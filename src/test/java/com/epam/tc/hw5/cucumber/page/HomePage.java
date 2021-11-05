@@ -2,12 +2,15 @@ package com.epam.tc.hw5.cucumber.page;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
+import com.epam.tc.hw5.cucumber.hooks.CucumberHooks;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 
 public class HomePage extends AbstractBasePage {
+    private static final String BASE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
     @FindBy(xpath = "//a[contains(text(),'Service')]")
     private WebElement serviceMenuButton;
     @FindBy(xpath = "//a[contains(text(),'Different elements')]")
@@ -15,12 +18,9 @@ public class HomePage extends AbstractBasePage {
     @FindBy(xpath = "//a[contains(text(),'User Table')]")
     private WebElement userTableButton;
 
-    public HomePage(WebDriver driver) {
-        super(driver);
-    }
 
     public void open() {
-        openHomePage();
+        CucumberHooks.driver.get(BASE_URL);
     }
 
     public void clickToServiceHeaderMenu() {

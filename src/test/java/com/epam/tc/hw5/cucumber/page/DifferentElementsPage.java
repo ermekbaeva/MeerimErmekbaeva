@@ -2,7 +2,6 @@ package com.epam.tc.hw5.cucumber.page;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -21,10 +20,14 @@ public class DifferentElementsPage extends AbstractBasePage {
     private WebElement selenRadiobutton;
     @FindBy(xpath = "//select[@class='uui-form-element']")
     private WebElement colorsDropDownMenu;
-
-    public DifferentElementsPage(WebDriver driver) {
-        super(driver);
-    }
+    @FindBy(xpath = "//li[text()[contains(.,'Selen')]]")
+    private WebElement selenLogRowPanel;
+    @FindBy(xpath = "//li[text()[contains(.,'Wind')]]")
+    private WebElement windLogRowPanel;
+    @FindBy(xpath = "//li[text()[contains(.,'Water')]]")
+    private WebElement waterLogRowPanel;
+    @FindBy(xpath = "//li[text()[contains(.,'Yellow')]]")
+    private WebElement yellowLogRowPanel;
 
     public boolean isWaterCheckboxDisplayed() {
         return waterCheckbox.isDisplayed();
@@ -61,19 +64,35 @@ public class DifferentElementsPage extends AbstractBasePage {
     }
 
     public boolean isWaterCheckboxSelected() {
-        return colorsDropDownMenu.isSelected();
+        return waterCheckbox.isSelected();
     }
 
     public boolean isWindCheckboxSelected() {
-        return colorsDropDownMenu.isSelected();
+        return windCheckbox.isSelected();
     }
 
     public boolean isSelenRadiobuttonSelected() {
-        return colorsDropDownMenu.isSelected();
+        return selenRadiobutton.isSelected();
     }
 
     public String isColorsDropDownMenuSelected() {
         Select colorSelect = new Select(colorsDropDownMenu);
         return colorSelect.getFirstSelectedOption().getText();
+    }
+
+    public boolean isWaterDisplayedOnLogRow() {
+        return waterLogRowPanel.isDisplayed();
+    }
+
+    public boolean isWindDisplayedOnLogRow() {
+        return windLogRowPanel.isDisplayed();
+    }
+
+    public boolean isSelenDisplayedOnLogRow() {
+        return selenLogRowPanel.isDisplayed();
+    }
+
+    public boolean isYellowDisplayedOnLogRow() {
+        return yellowLogRowPanel.isDisplayed();
     }
 }

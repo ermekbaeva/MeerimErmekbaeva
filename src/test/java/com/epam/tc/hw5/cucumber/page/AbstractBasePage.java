@@ -1,34 +1,26 @@
 package com.epam.tc.hw5.cucumber.page;
 
+import com.epam.tc.hw5.cucumber.hooks.CucumberHooks;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class AbstractBasePage {
-    private static final String BASE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
-    protected WebDriver driver;
-    protected WebDriverWait wait;
-    protected Actions actions;
+    public WebDriverWait wait;
     public static Properties prop;
-    protected LoginPage loginPage;
 
-    protected AbstractBasePage(WebDriver driver) {
-        this.driver = driver;
-        /*wait = new WebDriverWait(driver, 5L);
-        PageFactory.initElements(driver, this);*/
-        actions = new Actions(driver);
-        loginPage = new LoginPage(driver);
+    public AbstractBasePage() {
+        wait = new WebDriverWait(CucumberHooks.driver, 10L);
+        PageFactory.initElements(CucumberHooks.driver, this);
 
         try {
             prop = new Properties();
             FileInputStream ip = new FileInputStream(System.getProperty("user.dir")
-                    + "/src/test/resources/com.epam.tc.hw3/test.properties");
+                    + "/src/test/resources/com.epam.tc.hw5/test.properties");
             prop.load(ip);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -36,21 +28,4 @@ public class AbstractBasePage {
             e.printStackTrace();
         }
     }
-
-    public void clickToUserIconButton() {
-        loginPage.clickToUserIconButton();
-    }
-
-    public void sendKeysToLoginInputField(String username, String password) {
-        loginPage.sendKeysToLoginInputField(username, password);
-    }
-
-    public void clickToLoginButton() {
-        loginPage.clickToLoginButton();
-    }
-
-    public void openHomePage() {
-        driver.navigate().to(BASE_URL);
-    }
-
 }

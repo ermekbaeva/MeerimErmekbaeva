@@ -1,30 +1,23 @@
-package com.epam.tc.hw5.cucumber.step;
+package com.epam.tc.hw5.cucumber.steps;
 
 import static com.epam.tc.hw5.cucumber.page.AbstractBasePage.prop;
 
-import com.epam.tc.hw5.cucumber.context.TestContext;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class CommonStep extends AbstractBaseStep {
 
     @Given("I open Jdi test site")
     public void openHomePage() {
-        System.out.println("1111111111111111111111111111111");
         homePage.open();
     }
 
     @When("I login as user \"Roman Iovlev\"")
     public void loginInHomePage() {
-        homePage.clickToUserIconButton();
-        homePage.sendKeysToLoginInputField(prop.getProperty("username"), prop.getProperty("password"));
-        homePage.clickToLoginButton();
+        loginPage.clickToUserIconButton();
+        loginPage.sendKeysToLoginInputField(prop.getProperty("username"), prop.getProperty("password"));
+        loginPage.clickToLoginButton();
     }
 
     @When("I click on \"Service\" button in Header")
@@ -39,7 +32,7 @@ public class CommonStep extends AbstractBaseStep {
 
     @When("I click on \"User Table\" button in Service dropdown")
     public void clickToUserTableInServiceMenu() {
-        homePage.clickToDifferentElementsInServiceMenu();
+        homePage.clickToUserTableInServiceMenu();
     }
 
     @When("I select \"water\" checkbox")
@@ -62,7 +55,7 @@ public class CommonStep extends AbstractBaseStep {
         differentElementsPage.clickYellowInDropdownMenu();
     }
 
-    @When("I select \"vip\" checkbox for \"Sergey Ivan\"")
+    @When("I select 'vip' checkbox for \"Sergey Ivan\"")
     public void clickOnVipCheckboxforSergey() {
         userTablePage.clickToIvanVipCheckbox();
     }
