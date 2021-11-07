@@ -1,6 +1,5 @@
 package com.epam.tc.hw5.cucumber.steps;
 
-import com.epam.tc.hw5.cucumber.hooks.CucumberHooks;
 import com.epam.tc.hw5.cucumber.page.DifferentElementsPage;
 import com.epam.tc.hw5.cucumber.page.HomePage;
 import com.epam.tc.hw5.cucumber.page.LoginPage;

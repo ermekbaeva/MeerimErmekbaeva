@@ -2,7 +2,11 @@ package com.epam.tc.hw5.cucumber.steps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class AssertionStep extends AbstractBaseStep {
@@ -72,7 +76,7 @@ public class AssertionStep extends AbstractBaseStep {
                 .isTrue();
     }
 
-    @Then ("\"User Table\" page should be opened")
+    @Then("\"User Table\" page should be opened")
     public void userTablePageIsOpened() {
         String userTableTitle = userTablePage.userTableTitle();
         assertThat(userTableTitle)
@@ -120,13 +124,41 @@ public class AssertionStep extends AbstractBaseStep {
                 .isEqualTo(6);
     }
 
-    @Then("^User table should contain following values: ([^\\\"]+)$")
-    public void userTableContainValues() {
+    @Then("^User table should contain following values:$")
+    public void userTableContainValues(DataTable table) {
+        List<Map<String, String>> data = table.asMaps(String.class, String.class);
+        List<String> numbers = new ArrayList<>();
+        List<String> userNames = new ArrayList<>();
+        List<String> descriptions = new ArrayList<>();
 
+        for (Map<String, String> row : data) {
+            numbers.add(row.get("Number"));
+            userNames.add(row.get("User"));
+            descriptions.add(row.get("Description"));
+        }
+
+        assertThat(numbers)
+                .as("Number Types are not displayed on User Table Page")
+                .isEqualTo(userTablePage.getNumberOnUserTableActual());
+        assertThat(userNames)
+                .as("User Names are not displayed on User Table Page")
+                .isEqualTo(userTablePage.getUserNameOnUserTableActual());
+        assertThat(descriptions)
+                .as("Description are not displayed on User Table Page")
+                .isEqualTo(userTablePage.getDescriptionOnUserTableActual());
     }
 
-    @Then("^droplist should contain values ([^\\\"]+) in column Type for user Roman$")
-    public void droplistcontainValuesForRoman() {
+    @Then("^droplist should contain values in column Type for user Roman$")
+    public void droplistContainValuesForRoman(DataTable dataTable) {
+        List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
+        List<String> dropDownListExpected = new ArrayList<>();
 
+        for (Map<String, String> row : data) {
+            dropDownListExpected.add(row.get("Dropdown Values"));
+        }
+
+        assertThat(dropDownListExpected)
+                .as("Droplist doesn't contain proper values on User Table Page")
+                .isEqualTo(userTablePage.typeForUserDropdown());
     }
 }

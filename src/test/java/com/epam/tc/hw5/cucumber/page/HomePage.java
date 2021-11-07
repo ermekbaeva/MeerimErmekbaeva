@@ -3,10 +3,8 @@ package com.epam.tc.hw5.cucumber.page;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 import com.epam.tc.hw5.cucumber.hooks.CucumberHooks;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 
 public class HomePage extends AbstractBasePage {
