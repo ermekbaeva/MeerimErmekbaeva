@@ -19,9 +19,9 @@
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <calculator.version>1.0</calculator.version>
         <assertj-core.version>3.21.0</assertj-core.version>
-        <selenium-java.version>4.0.0</selenium-java.version>
-        <webdrivermanager.version>5.0.2</webdrivermanager.version>
-        <junit.version>4.13.2</junit.version>
+        <selenium-java.version>3.141.59</selenium-java.version>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <junit.version>4.12</junit.version>
         <cucumber-java.version>7.0.0</cucumber-java.version>
         <cucumber-testng.version>7.0.0</cucumber-testng.version>
 
@@ -57,6 +57,20 @@
             <id>all-pages-homework2-test-suite</id>
             <properties>
                 <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw2/AllPagesUITestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework3-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw3/AllPagesTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework4-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw4/AllPagesTestSuite.xml
                 </suite.xml.name>
             </properties>
         </profile>
