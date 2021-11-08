@@ -22,6 +22,11 @@
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <junit.version>4.12</junit.version>
+        <aspectj.version>1.9.7</aspectj.version>
+        <allure-testng.version>2.15.0</allure-testng.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <reportVersion.version>2.10.0</reportVersion.version>
+        <allure-commandline.version>2.15.0</allure-commandline.version>
 
         <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
         </suite.xml.name>
@@ -58,9 +63,44 @@
                 </suite.xml.name>
             </properties>
         </profile>
+        <profile>
+            <id>all-pages-homework3-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw3/AllPagesTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework4-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw4/AllPagesTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework6-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw6/AllPagesTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-commandline</artifactId>
+            <version>${allure-commandline.version}</version>
+            <type>zip</type>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -110,7 +150,21 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
+                    <systemProperties>
+                        <property>
+                            <name>allure.results.directory</name>
+                            <value>${project.basedir}/target/allure-results</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
 
             <plugin>
@@ -144,6 +198,15 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>${reportVersion.version}</reportVersion>
+                    <installDirectory>${project.build.directory}</installDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>
