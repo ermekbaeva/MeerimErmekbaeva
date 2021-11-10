@@ -6,6 +6,7 @@ import static org.testng.AssertJUnit.assertTrue;
 import com.epam.tc.hw6.pages.BasePage;
 import com.epam.tc.hw6.pages.HomePage;
 import com.epam.tc.hw6.pages.LoginPage;
+import com.epam.tc.hw6.service.WebDriverProvider;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
@@ -161,6 +162,6 @@ public class HomePageTest extends BasePage {
 
     @AfterMethod
     public void closeBrowser() {
-        webDriver.close();
+        WebDriverProvider.closeDriver();
     }
 }
