@@ -1,7 +1,5 @@
 package com.epam.tc.hw5.cucumber.steps;
 
-import static com.epam.tc.hw5.cucumber.page.AbstractBasePage.prop;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 

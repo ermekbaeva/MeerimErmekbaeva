@@ -11,21 +11,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AbstractBasePage {
     public WebDriverWait wait;
-    public static Properties prop;
 
     public AbstractBasePage() {
         wait = new WebDriverWait(CucumberHooks.driver, 10L);
         PageFactory.initElements(CucumberHooks.driver, this);
-
-        try {
-            prop = new Properties();
-            FileInputStream ip = new FileInputStream(System.getProperty("user.dir")
-                    + "/src/test/resources/com.epam.tc.hw5/test.properties");
-            prop.load(ip);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }
