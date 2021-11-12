@@ -27,6 +27,7 @@
         <allure-maven.version>2.10.0</allure-maven.version>
         <reportVersion.version>2.10.0</reportVersion.version>
         <allure-commandline.version>2.15.0</allure-commandline.version>
+        <jdi-light-html.version>RELEASE</jdi-light-html.version>
 
         <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
         </suite.xml.name>
@@ -84,7 +85,7 @@
         <dependency>
             <groupId>com.epam.jdi</groupId>
             <artifactId>jdi-light-html</artifactId>
-            <version>RELEASE</version>
+            <version>${jdi-light-html.version}</version>
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
