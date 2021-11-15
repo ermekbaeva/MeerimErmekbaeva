@@ -16,18 +16,18 @@
         <checkstyle.version>8.42</checkstyle.version>
         <testng.version>7.4.0</testng.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <calculator.version>1.0</calculator.version>
         <assertj-core.version>3.21.0</assertj-core.version>
         <selenium-java.version>3.141.59</selenium-java.version>
-        <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <junit.version>4.12</junit.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure-testng.version>2.15.0</allure-testng.version>
         <allure-maven.version>2.10.0</allure-maven.version>
         <reportVersion.version>2.10.0</reportVersion.version>
         <allure-commandline.version>2.15.0</allure-commandline.version>
-        <jdi-light-html.version>RELEASE</jdi-light-html.version>
+        <jdi-light-html.version>1.3.16</jdi-light-html.version>
+        <json-simple.version>1.1.1</json-simple.version>
 
         <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw1/SumAndSubtractCalculatorTestSuite.xml
         </suite.xml.name>
@@ -78,9 +78,28 @@
                 </suite.xml.name>
             </properties>
         </profile>
+        <profile>
+            <id>all-pages-homework7-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw7/Homework7TestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.9</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>${json-simple.version}</version>
+        </dependency>
+
         <!--JDI-->
         <dependency>
             <groupId>com.epam.jdi</groupId>
@@ -117,19 +136,11 @@
             <scope>test</scope>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.github.bonigarcia</groupId>
-            <artifactId>webdrivermanager</artifactId>
-            <version>${webdrivermanager.version}</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -148,14 +159,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.xml.name}</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
                     <systemProperties>
                         <property>
-                            <name>allure.results.directory</name>
-                            <value>${project.basedir}/target/allure-results</value>
                         </property>
                     </systemProperties>
                 </configuration>
@@ -209,5 +221,13 @@
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/test/resources/com.epam.tc.hw7</directory>
+            </resource>
+        </resources>
     </build>
 </project>
