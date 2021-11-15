@@ -140,6 +140,14 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+             
+        <dependency>
+            <groupId>com.calculator</groupId>
+            <artifactId>calculator</artifactId>
+            <version>${calculator.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
