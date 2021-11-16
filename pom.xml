@@ -16,11 +16,14 @@
         <checkstyle.version>8.42</checkstyle.version>
         <testng.version>7.4.0</testng.version>
         <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <calculator.version>1.0</calculator.version>
         <assertj-core.version>3.21.0</assertj-core.version>
         <selenium-java.version>3.141.59</selenium-java.version>
+        <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <junit.version>4.12</junit.version>
+        <cucumber-java.version>7.0.0</cucumber-java.version>
+        <cucumber-testng.version>7.0.0</cucumber-testng.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure-testng.version>2.15.0</allure-testng.version>
         <allure-maven.version>2.10.0</allure-maven.version>
@@ -75,6 +78,13 @@
             <id>all-pages-homework4-test-suite</id>
             <properties>
                 <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw4/AllPagesTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>all-pages-homework5-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw5/CucumberHomework5TestSuite.xml
                 </suite.xml.name>
             </properties>
         </profile>
@@ -144,10 +154,31 @@
         </dependency>
 
         <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-java.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber-testng.version}</version>
         </dependency>
 
     </dependencies>

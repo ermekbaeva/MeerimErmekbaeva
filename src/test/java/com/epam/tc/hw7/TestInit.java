@@ -5,6 +5,7 @@ import static com.epam.jdi.light.elements.init.PageFactory.initElements;
 import static com.epam.tc.hw7.steps.LoginSteps.openSite;
 import static com.epam.tc.hw7.steps.LoginSteps.login;
 import static com.epam.tc.hw7.steps.LoginSteps.shouldBeLoggedIn;
+import static com.epam.tc.hw7.steps.MetalsAndColorsSteps.openMetalsColorsPage;
 
 import com.epam.tc.hw7.pages.JdiSite;
 import org.testng.annotations.AfterSuite;
@@ -18,6 +19,7 @@ public interface TestInit {
         openSite();
         login();
         shouldBeLoggedIn();
+        openMetalsColorsPage();
     }
 
     @AfterSuite(alwaysRun = true)

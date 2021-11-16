@@ -5,12 +5,18 @@ import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.common.Link;
 import com.epam.jdi.light.ui.html.elements.common.Text;
 import com.epam.tc.hw7.sections.LoginForm;
+import com.epam.tc.hw7.sections.MetalsAndColorsForm;
+import com.epam.tc.hw7.sections.VegetablesMultiSelectMetalsColorsForm;
 
 public class JdiSite {
     public static HomePage homePage;
     public static LoginForm loginForm;
-
+    public static MetalsAndColorsPage metalsAndColorsPage;
+    public static VegetablesMultiSelectMetalsColorsForm vegetables;
+    public static MetalsAndColorsForm metalsAndColorsForm;
+    @UI("#submit-button") public static Button submitButton;
     @UI("img#user-icon") public static Link userIcon;
     @UI("#user-name") public static Text userName;
     @UI(".fa-sign-out") public static Button logout;
+    @UI("//a[contains(text(),'Metals & Colors')]") public static Button metalsAndColorsNavBar;
 }
