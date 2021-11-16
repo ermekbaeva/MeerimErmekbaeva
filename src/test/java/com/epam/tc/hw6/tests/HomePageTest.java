@@ -49,7 +49,7 @@ public class HomePageTest extends BasePage {
         checkElementsSideBarMenu();
     }
 
-    @Step("Assert Browser title")
+    @Step("Assert browser title")
     public void checkBrowserTitle() {
         assertEquals(prop.getProperty("title"), webDriver.getTitle());
     }
@@ -59,7 +59,7 @@ public class HomePageTest extends BasePage {
         loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
     }
 
-    @Step("Assert Username is loggined")
+    @Step("Assert username is loggined")
     public void checkUserIsLogined() {
         assertTrue(loginPage.isUserNameDisplayed());
         assertTrue(loginPage.getUserName().getText()
