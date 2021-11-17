@@ -4,14 +4,16 @@ import com.epam.tc.hw7.entity.MetalsAndColors;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.testng.annotations.DataProvider;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+import org.testng.annotations.DataProvider;
+
 
 public class MetalsAndColorsDataProvider {
-    public static final String PATH_TO_DATA_FILES = "src/test/resources/com.epam.tc.hw7/data/JDI_ex8_metalsColorsDataSet.json";
+    public static final String PATH_TO_DATA_FILES = "src/test/resources/com.epam.tc.hw7/data/"
+            + "JDI_ex8_metalsColorsDataSet.json";
 
     @DataProvider
     public static Object[][] getDataFromJson() throws FileNotFoundException {

@@ -1,12 +1,11 @@
 package com.epam.tc.hw7.steps;
 
-import com.epam.tc.hw7.TestInit;
-import com.epam.tc.hw7.data.MetalsAndColorsDataProvider;
-import com.epam.tc.hw7.entity.MetalsAndColors;
-import io.qameta.allure.Step;
-import org.testng.annotations.Test;
+import static com.epam.tc.hw7.pages.JdiSite.metalsAndColorsPage;
+import static com.epam.tc.hw7.pages.JdiSite.metalsAndColorsNavBar;
 
-import static com.epam.tc.hw7.pages.JdiSite.*;
+import com.epam.tc.hw7.TestInit;
+import io.qameta.allure.Step;
+
 
 public class MetalsAndColorsSteps implements TestInit {
 
@@ -15,6 +14,4 @@ public class MetalsAndColorsSteps implements TestInit {
         metalsAndColorsNavBar.click();
         metalsAndColorsPage.checkOpened();
     }
-
-
 }

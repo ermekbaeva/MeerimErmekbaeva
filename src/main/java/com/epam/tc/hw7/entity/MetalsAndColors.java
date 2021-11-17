@@ -1,6 +1,5 @@
 package com.epam.tc.hw7.entity;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class MetalsAndColors {
@@ -11,7 +10,7 @@ public class MetalsAndColors {
     private List<String> vegetables;
 
     public MetalsAndColors(List<Integer> summary, List<String> elements, String color, String metals,
-                              List<String> vegetables) {
+                           List<String> vegetables) {
         this.summary = summary;
         this.elements = elements;
         this.color = color;
@@ -39,10 +38,7 @@ public class MetalsAndColors {
         return vegetables;
     }
 
-    private Integer getSum() {
-        return getSummary()
-                .stream()
-                .mapToInt(Integer::intValue)
-                .sum();
+    public Integer getSum() {
+        return getSummary().get(0) + getSummary().get(1);
     }
 }
