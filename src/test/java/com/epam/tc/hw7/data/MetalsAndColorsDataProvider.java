@@ -4,10 +4,8 @@ import com.epam.tc.hw7.entity.MetalsAndColors;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-
 import org.testng.annotations.DataProvider;
 
 

@@ -2,8 +2,8 @@ package com.epam.tc.hw7;
 
 import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
 import static com.epam.jdi.light.elements.init.PageFactory.initElements;
-import static com.epam.tc.hw7.steps.LoginSteps.openSite;
 import static com.epam.tc.hw7.steps.LoginSteps.login;
+import static com.epam.tc.hw7.steps.LoginSteps.openSite;
 import static com.epam.tc.hw7.steps.LoginSteps.shouldBeLoggedIn;
 
 import com.epam.tc.hw7.pages.JdiSite;
