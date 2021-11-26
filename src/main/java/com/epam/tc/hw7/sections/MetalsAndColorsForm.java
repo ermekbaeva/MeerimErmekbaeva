@@ -1,6 +1,5 @@
 package com.epam.tc.hw7.sections;
 
-import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Checklist;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Form;
@@ -41,8 +40,7 @@ public class MetalsAndColorsForm extends Form<MetalsAndColors> {
     @UI("#submit-button")
     public static Button submitButton;
     @UI("[class='panel-body-list results'] li")
-    public static UIElement results;
-    public static List<String> actualResult;
+    public static List<WebElement> results;
 
     public void selectVegetables(String... value) {
         vegetables.select(value);
@@ -83,8 +81,7 @@ public class MetalsAndColorsForm extends Form<MetalsAndColors> {
     }
 
     public List<String> getResult() {
-        return results.getWebElements()
-                .stream()
+        return results.stream()
                 .map(WebElement::getText)
                 .collect(Collectors.toList());
     }
