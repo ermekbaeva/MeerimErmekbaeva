@@ -1,11 +1,6 @@
 package com.epam.tc.hw7.tests;
 
-import static com.epam.tc.hw7.pages.JdiSite.colorResult;
-import static com.epam.tc.hw7.pages.JdiSite.elementsResult;
-import static com.epam.tc.hw7.pages.JdiSite.metalsAndColorsForm;
-import static com.epam.tc.hw7.pages.JdiSite.metalsResult;
-import static com.epam.tc.hw7.pages.JdiSite.summaryResult;
-import static com.epam.tc.hw7.pages.JdiSite.vegetablesResult;
+import static com.epam.tc.hw7.pages.MetalsAndColorsPage.metalsAndColorsForm;
 import static com.epam.tc.hw7.steps.MetalsAndColorsSteps.openMetalsColorsPage;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -31,10 +26,6 @@ public class JdiPageTest implements TestInit {
         metalsAndColorsForm.selectVegetables(data.getVegetables());
         metalsAndColorsForm.clickSubmitButton();
 
-        assertThat(summaryResult.getText()).containsIgnoringCase(String.valueOf(data.getSum()));
-        assertThat(colorResult.getText()).containsIgnoringCase(data.getColor());
-        assertThat(metalsResult.getText()).containsIgnoringCase(data.getMetals());
-        assertThat(elementsResult.getText()).contains(data.getElements());
-        assertThat(vegetablesResult.getText()).contains(data.getVegetables());
+        assertThat(data.toListString()).isEqualTo(metalsAndColorsForm.getResult());
     }
 }

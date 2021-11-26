@@ -1,7 +1,6 @@
 package com.epam.tc.hw7.sections;
 
-import static com.epam.tc.hw7.pages.JdiSite.submitButton;
-
+import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Checklist;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
 import com.epam.jdi.light.elements.composite.Form;
@@ -11,6 +10,8 @@ import com.epam.jdi.light.ui.html.elements.common.Button;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
 import com.epam.tc.hw7.entity.MetalsAndColors;
 import java.util.List;
+import java.util.stream.Collectors;
+import org.openqa.selenium.WebElement;
 
 
 public class MetalsAndColorsForm extends Form<MetalsAndColors> {
@@ -37,17 +38,18 @@ public class MetalsAndColorsForm extends Form<MetalsAndColors> {
             list = "li",
             expand = ".caret")
     public static Dropdown vegetables;
+    @UI("#submit-button")
+    public static Button submitButton;
+    @UI("[class='panel-body-list results'] li")
+    public static UIElement results;
+    public static List<String> actualResult;
 
-    public void selectVegetables(List<String> value) {
-        for (String val : value) {
-            vegetables.select(val);
-        }
+    public void selectVegetables(String... value) {
+        vegetables.select(value);
     }
 
-    public void selectElements(List<String> value) {
-        for (String val : value) {
-            elements.select(val);
-        }
+    public void selectElements(String... value) {
+        elements.select(value);
     }
 
     public void selectOddNumbers(String value) {
@@ -78,5 +80,12 @@ public class MetalsAndColorsForm extends Form<MetalsAndColors> {
 
     public void clickSubmitButton() {
         submitButton.click();
+    }
+
+    public List<String> getResult() {
+        return results.getWebElements()
+                .stream()
+                .map(WebElement::getText)
+                .collect(Collectors.toList());
     }
 }
