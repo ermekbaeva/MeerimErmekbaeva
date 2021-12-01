@@ -3,7 +3,7 @@
 <suite name="Trello Api Test" verbose="1" >
     <test name="Trello Api Test">
         <classes>
-            <class name="com.epam.tc.hw9.TrelloApiTest"/>
+            <class name="com.epam.tc.hw9.BaseApiTest"/>
         </classes>
     </test>
 </suite>
