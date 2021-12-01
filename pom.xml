@@ -89,6 +89,13 @@
             </properties>
         </profile>
         <profile>
+            <id>all-pages-homework6-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw6/AllPagesTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
+        <profile>
             <id>all-pages-homework7-test-suite</id>
             <properties>
                 <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw7/Homework7TestSuite.xml
@@ -179,6 +186,14 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber-testng.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.calculator</groupId>
+            <artifactId>calculator</artifactId>
+            <version>${calculator.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
         </dependency>
 
     </dependencies>
