@@ -19,13 +19,31 @@ import static com.epam.tc.hw9.util.PropertiesReader.getProperty;
 import static org.hamcrest.Matchers.lessThan;
 
 public class BasicServiceObject {
-    public static final URI TRELLO_URI = URI.create(getProperty("baseUri"));
+    public static final URI BOARD_URI = URI.create(getProperty("baseUri"));
     protected Method requestMethod;
     protected Map<String, String> parameters;
 
     public BasicServiceObject(Map<String, String> parameters, Method method) {
         this.parameters = parameters;
         this.requestMethod = method;
+    }
+
+    public Response sendRequest(String endpoint) {
+        return RestAssured
+                .given(requestSpecification()).log().all()
+                .queryParam(KEY,getProperty("key"))
+                .queryParam(TOKEN,getProperty("token"))
+                .queryParams(parameters)
+                .request(requestMethod, BOARD_URI + endpoint)
+                .prettyPeek();
+    }
+
+    public static RequestSpecification requestSpecification() {
+        return new RequestSpecBuilder()
+                .setAccept(ContentType.JSON)
+                .setContentType(ContentType.JSON)
+                .setBaseUri(BOARD_URI)
+                .build();
     }
 
     public static ResponseSpecification goodResponseSpecification() {
@@ -41,24 +59,6 @@ public class BasicServiceObject {
                 .expectContentType(ContentType.TEXT)
                 .expectResponseTime(lessThan(10000L))
                 .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
-                .build();
-    }
-
-    public Response sendRequest() {
-        return RestAssured
-                .given(requestSpecification()).log().all()
-                .queryParam(KEY,getProperty("key"))
-                .queryParam(TOKEN,getProperty("token"))
-                .queryParams(parameters)
-                .request(requestMethod, TRELLO_URI)
-                .prettyPeek();
-    }
-
-    public static RequestSpecification requestSpecification() {
-        return new RequestSpecBuilder()
-                .setAccept(ContentType.JSON)
-                .setContentType(ContentType.JSON)
-                .setBaseUri(TRELLO_URI)
                 .build();
     }
 }

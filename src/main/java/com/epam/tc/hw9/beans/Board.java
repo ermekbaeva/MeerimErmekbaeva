@@ -24,6 +24,13 @@ public class Board {
     @SerializedName("shortUrl")
     private String shortUrl;
 
+    public Board() {
+
+    }
+
+    public Board(Board boardObject) {
+    }
+
     public String getPinned() {
         return pinned;
     }
