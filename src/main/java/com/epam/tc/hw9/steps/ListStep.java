@@ -22,7 +22,7 @@ public class ListStep {
     }
 
     @Step
-    public static Response getList(String id) {
+    public static Response getLists(String id) {
         Response response = listRequestBuilder()
                 .setMethod(Method.GET)
                 .buildRequest()

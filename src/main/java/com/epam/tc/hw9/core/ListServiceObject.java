@@ -24,7 +24,7 @@ public class ListServiceObject extends BasicServiceObject {
         return new ListRequestBuilder();
     }
 
-    public static Lists getListObject(Response response){
+    public static Lists getListObject(Response response) {
         return new Gson().fromJson(response.asString()
                 .trim(), new TypeToken<List<Lists>>() {}
                 .getType());
@@ -34,7 +34,7 @@ public class ListServiceObject extends BasicServiceObject {
         private Map<String, String> parameters = new HashMap<>();
         private Method requestMethod = Method.GET;
 
-        public ListRequestBuilder setMethod (Method method){
+        public ListRequestBuilder setMethod(Method method) {
             requestMethod = method;
             return this;
         }

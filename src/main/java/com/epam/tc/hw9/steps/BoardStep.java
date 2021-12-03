@@ -23,11 +23,12 @@ public class BoardStep {
     }
 
     @Step
-    public static Response getBoard(String id) {
-        return boardRequestBuilder()
+    public static String getBoardName(String id) {
+        Response response = boardRequestBuilder()
                 .setMethod(Method.GET)
                 .buildRequest()
                 .sendRequest(BOARDS_ENDPOINT + id);
+        return getBoardObject(response).getName();
     }
 
     @Step

@@ -1,11 +1,12 @@
 package com.epam.tc.hw9.core;
 
-import static com.epam.tc.hw9.constants.Constants.ID;
-import static com.epam.tc.hw9.constants.Constants.NAME;
+import static com.epam.tc.hw9.constants.Constants.CLOSED;
 import static com.epam.tc.hw9.constants.Constants.DESC;
 import static com.epam.tc.hw9.constants.Constants.DESC_DATA;
-import static com.epam.tc.hw9.constants.Constants.CLOSED;
+import static com.epam.tc.hw9.constants.Constants.ID;
+import static com.epam.tc.hw9.constants.Constants.ID_ENTERPRISE;
 import static com.epam.tc.hw9.constants.Constants.ID_ORGANIZATION;
+import static com.epam.tc.hw9.constants.Constants.NAME;
 
 import com.epam.tc.hw9.beans.Board;
 import com.google.gson.Gson;
@@ -28,21 +29,9 @@ public class BoardServiceObject extends BasicServiceObject {
 
     public static Board getBoardObject(Response response) {
         return new Gson().fromJson(response.asString()
-                .trim(), new TypeToken<Board>() {
-        }
+                .trim(), new TypeToken<Board>() {}
                 .getType());
     }
-
-    /*public static List<Board> getBoardId(Response response) {
-        List<Board> boardId = new Gson()
-                .fromJson(response.asString().trim(), new TypeToken<List<Board>>() {
-                }.getType());
-        return boardId;
-    }
-
-    public static List<String> getStringResult(Response response) {
-        return getBoardId(response).stream().map(Board::getName).collect(Collectors.toList());
-    }*/
 
     public static class BoardRequestBuilder {
         private Map<String, String> parameters = new HashMap<>();
@@ -80,6 +69,11 @@ public class BoardServiceObject extends BasicServiceObject {
 
         public BoardRequestBuilder setIdOrganization(String idOrganization) {
             parameters.put(ID_ORGANIZATION, idOrganization);
+            return this;
+        }
+
+        public BoardRequestBuilder setIdEnterprise(String idEnterprise) {
+            parameters.put(ID_ENTERPRISE, idEnterprise);
             return this;
         }
 

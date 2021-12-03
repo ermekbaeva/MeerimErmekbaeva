@@ -95,6 +95,13 @@
                 </suite.xml.name>
             </properties>
         </profile>
+        <profile>
+            <id>all-pages-homework9-test-suite</id>
+            <properties>
+                <suite.xml.name>${project.basedir}/src/test/resources/com.epam.tc.hw9/TrelloApiTestSuite.xml
+                </suite.xml.name>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
