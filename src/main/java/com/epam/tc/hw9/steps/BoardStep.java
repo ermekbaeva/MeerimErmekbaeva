@@ -1,23 +1,22 @@
 package com.epam.tc.hw9.steps;
 
-import com.github.javafaker.Faker;
+import static com.epam.tc.hw9.constants.Constants.NAME_FOR_BOARD;
+import static com.epam.tc.hw9.constants.EndPoints.BOARDS_ENDPOINT;
+import static com.epam.tc.hw9.core.BasicServiceObject.goodResponseSpecification;
+import static com.epam.tc.hw9.core.BoardServiceObject.boardRequestBuilder;
+import static com.epam.tc.hw9.core.BoardServiceObject.getBoardObject;
+
 import io.qameta.allure.Step;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 
-import java.util.Random;
-import static com.epam.tc.hw9.constants.EndPoints.BOARDS_ENDPOINT;
-import static com.epam.tc.hw9.core.BasicServiceObject.goodResponseSpecification;
-import static com.epam.tc.hw9.core.BoardServiceObject.getBoardObject;
-import static com.epam.tc.hw9.core.BoardServiceObject.requestBuilder;
 
 public class BoardStep {
     @Step
     public static String createBoard() {
-        Faker faker = new Faker(new Random(24));
-        Response response = requestBuilder()
+        Response response = boardRequestBuilder()
                 .setMethod(Method.POST)
-                .setName(faker.name().firstName())
+                .setName(NAME_FOR_BOARD)
                 .buildRequest()
                 .sendRequest(BOARDS_ENDPOINT);
         return getBoardObject(response).getId();
@@ -25,7 +24,7 @@ public class BoardStep {
 
     @Step
     public static Response getBoard(String id) {
-        return requestBuilder()
+        return boardRequestBuilder()
                 .setMethod(Method.GET)
                 .buildRequest()
                 .sendRequest(BOARDS_ENDPOINT + id);
@@ -33,7 +32,7 @@ public class BoardStep {
 
     @Step
     public static void deleteBoard(String id) {
-        requestBuilder()
+        boardRequestBuilder()
                 .setMethod(Method.DELETE)
                 .buildRequest()
                 .sendRequest(BOARDS_ENDPOINT + id)

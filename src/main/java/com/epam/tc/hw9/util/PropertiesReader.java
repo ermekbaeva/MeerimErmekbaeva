@@ -13,7 +13,7 @@ public class PropertiesReader {
     }
 
     public static String getProperty(String getData) {
-        String data="";
+        String data = "";
         try {
             prop = new Properties();
             prop.load(new FileInputStream(System.getProperty("user.dir")

@@ -1,20 +1,21 @@
 package com.epam.tc.hw9;
 
-import org.junit.After;
-import org.junit.Before;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import static com.epam.tc.hw9.steps.BoardStep.*;
+import static com.epam.tc.hw9.steps.BoardStep.createBoard;
+import static com.epam.tc.hw9.steps.BoardStep.deleteBoard;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+
 
 public class BaseApiTest {
     protected static String boardId;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
         boardId = createBoard();
     }
 
-    @AfterTest
+    @AfterClass
     public void tearDown() {
         deleteBoard(boardId);
     }

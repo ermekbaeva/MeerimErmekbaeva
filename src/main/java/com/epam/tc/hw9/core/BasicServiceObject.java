@@ -1,5 +1,10 @@
 package com.epam.tc.hw9.core;
 
+import static com.epam.tc.hw9.constants.Constants.KEY;
+import static com.epam.tc.hw9.constants.Constants.TOKEN;
+import static com.epam.tc.hw9.util.PropertiesReader.getProperty;
+import static org.hamcrest.Matchers.lessThan;
+
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -8,15 +13,10 @@ import io.restassured.http.Method;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.apache.http.HttpStatus;
-
 import java.net.URI;
 import java.util.Map;
+import org.apache.http.HttpStatus;
 
-import static com.epam.tc.hw9.constants.Constants.KEY;
-import static com.epam.tc.hw9.constants.Constants.TOKEN;
-import static com.epam.tc.hw9.util.PropertiesReader.getProperty;
-import static org.hamcrest.Matchers.lessThan;
 
 public class BasicServiceObject {
     public static final URI BOARD_URI = URI.create(getProperty("baseUri"));
@@ -31,9 +31,9 @@ public class BasicServiceObject {
     public Response sendRequest(String endpoint) {
         return RestAssured
                 .given(requestSpecification()).log().all()
-                .queryParam(KEY,getProperty("key"))
-                .queryParam(TOKEN,getProperty("token"))
                 .queryParams(parameters)
+                .queryParam(KEY, getProperty("key"))
+                .queryParam(TOKEN, getProperty("token"))
                 .request(requestMethod, BOARD_URI + endpoint)
                 .prettyPeek();
     }

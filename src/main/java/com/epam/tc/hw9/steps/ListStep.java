@@ -1,35 +1,32 @@
 package com.epam.tc.hw9.steps;
 
-import com.epam.tc.hw9.beans.Board;
-import com.github.javafaker.Faker;
+import static com.epam.tc.hw9.constants.Constants.NAME_FOR_LIST;
+import static com.epam.tc.hw9.constants.EndPoints.BOARDS_ENDPOINT;
+import static com.epam.tc.hw9.constants.EndPoints.LISTS_ENDPOINT;
+import static com.epam.tc.hw9.core.ListServiceObject.listRequestBuilder;
+
 import io.qameta.allure.Step;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
-import java.util.Random;
 
-import static com.epam.tc.hw9.constants.EndPoints.LISTS_ENDPOINT;
-import static com.epam.tc.hw9.core.BoardServiceObject.getBoardObject;
-import static com.epam.tc.hw9.core.BoardServiceObject.requestBuilder;
 
 public class ListStep {
     @Step
-    public static String createList() {
-        Faker faker = new Faker(new Random(24));
-        Response response =  requestBuilder()
+    public static Response createList(String id) {
+        Response response = listRequestBuilder()
                 .setMethod(Method.POST)
-                .setName(faker.name().firstName())
+                .setName(NAME_FOR_LIST)
                 .buildRequest()
-                .sendRequest(LISTS_ENDPOINT);
-        return getBoardObject(response).getId();
+                .sendRequest(BOARDS_ENDPOINT + id + LISTS_ENDPOINT);
+        return response;
     }
 
     @Step
-    public static Board getList(String id) {
-        Response response =  requestBuilder()
+    public static Response getList(String id) {
+        Response response = listRequestBuilder()
                 .setMethod(Method.GET)
-                .setId(id)
                 .buildRequest()
-                .sendRequest(LISTS_ENDPOINT);
-        return getBoardObject(response);
+                .sendRequest(BOARDS_ENDPOINT + id + LISTS_ENDPOINT);
+        return response;
     }
 }

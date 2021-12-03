@@ -1,5 +1,12 @@
 package com.epam.tc.hw9.core;
 
+import static com.epam.tc.hw9.constants.Constants.ID;
+import static com.epam.tc.hw9.constants.Constants.NAME;
+import static com.epam.tc.hw9.constants.Constants.DESC;
+import static com.epam.tc.hw9.constants.Constants.DESC_DATA;
+import static com.epam.tc.hw9.constants.Constants.CLOSED;
+import static com.epam.tc.hw9.constants.Constants.ID_ORGANIZATION;
+
 import com.epam.tc.hw9.beans.Board;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -8,8 +15,6 @@ import io.restassured.response.Response;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.epam.tc.hw9.constants.Constants.*;
-
 
 public class BoardServiceObject extends BasicServiceObject {
 
@@ -17,13 +22,14 @@ public class BoardServiceObject extends BasicServiceObject {
         super(parameters, method);
     }
 
-    public static BoardRequestBuilder requestBuilder() {
+    public static BoardRequestBuilder boardRequestBuilder() {
         return new BoardRequestBuilder();
     }
 
-    public static Board getBoardObject(Response response){
+    public static Board getBoardObject(Response response) {
         return new Gson().fromJson(response.asString()
-                .trim(), new TypeToken<Board>() {}
+                .trim(), new TypeToken<Board>() {
+        }
                 .getType());
     }
 
@@ -42,7 +48,7 @@ public class BoardServiceObject extends BasicServiceObject {
         private Map<String, String> parameters = new HashMap<>();
         private Method requestMethod = Method.GET;
 
-        public BoardRequestBuilder setMethod (Method method){
+        public BoardRequestBuilder setMethod(Method method) {
             requestMethod = method;
             return this;
         }
