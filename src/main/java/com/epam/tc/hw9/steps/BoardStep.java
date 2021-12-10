@@ -6,6 +6,7 @@ import static com.epam.tc.hw9.core.BasicServiceObject.goodResponseSpecification;
 import static com.epam.tc.hw9.core.BoardServiceObject.boardRequestBuilder;
 import static com.epam.tc.hw9.core.BoardServiceObject.getBoardObject;
 import static com.epam.tc.hw9.util.PropertiesReader.getProperty;
+import static com.epam.tc.hw9.util.RandomString.randomString;
 
 import com.epam.tc.hw9.beans.TrelloBoard;
 import io.qameta.allure.Step;
@@ -16,10 +17,10 @@ import java.util.List;
 
 public class BoardStep {
     @Step
-    public static TrelloBoard createBoard(String boardName) {
+    public static TrelloBoard createBoard() {
         Response response = boardRequestBuilder()
                 .setMethod(Method.POST)
-                .setName(boardName)
+                .setName(randomString())
                 .buildRequest()
                 .sendRequest(BOARDS_ENDPOINT)
                 .then().extract().response();

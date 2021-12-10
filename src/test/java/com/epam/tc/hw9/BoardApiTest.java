@@ -1,47 +1,34 @@
 package com.epam.tc.hw9;
 
 import static com.epam.tc.hw9.constants.EndPoints.BOARDS_ENDPOINT;
+import static com.epam.tc.hw9.core.BasicServiceObject.badResponseSpecification;
 import static com.epam.tc.hw9.core.BoardServiceObject.boardRequestBuilder;
 import static com.epam.tc.hw9.core.BoardServiceObject.getBoardObject;
 import static com.epam.tc.hw9.steps.BoardStep.createBoard;
 import static com.epam.tc.hw9.steps.BoardStep.deleteBoardById;
 import static com.epam.tc.hw9.steps.BoardStep.getBoard;
+import static com.epam.tc.hw9.util.RandomString.randomString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 import io.restassured.http.Method;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.Test;
 
 
 public class BoardApiTest extends BaseApiTest {
 
     @Test
-    public void checkBoardHasCorrectName() {
-        String randomStringForBoardName = RandomStringUtils.random(10, true, false);
-        board = createBoard(randomStringForBoardName);
-        String boardName = getBoardObject(
-                getBoard(board.getId())
-                        .then()
-                        .extract()
-                        .response()).getName();
-        assertThat(boardName, equalTo(randomStringForBoardName));
-    }
-
-    @Test
     public void boardDeleteById() {
-        String randomStringForBoardName = RandomStringUtils.random(10, true, false);
-        board = createBoard(randomStringForBoardName);
+        board = createBoard();
         deleteBoardById(board.getId());
         getBoard(board.getId())
-                .then()
-                .statusCode(404);
+                .then().assertThat()
+                .spec(badResponseSpecification());
     }
 
     @Test
     public void boardUpdateClosedStatus() {
-        String randomStringForBoardName = RandomStringUtils.random(10, true, false);
-        board = createBoard(randomStringForBoardName);
+        board = createBoard();
         board = getBoardObject(boardRequestBuilder()
                 .setMethod(Method.PUT)
                 .setClosed("true")
@@ -54,16 +41,16 @@ public class BoardApiTest extends BaseApiTest {
 
     @Test
     public void boardUpdateName() {
-        String randomStringForBoardName = RandomStringUtils.random(10, true, false);
-        board = createBoard(randomStringForBoardName);
+        String randomStr = randomString();
+        board = createBoard();
         board = getBoardObject(boardRequestBuilder()
                 .setMethod(Method.PUT)
-                .setName(randomStringForBoardName)
+                .setName(randomStr)
                 .buildRequest()
                 .sendRequest(BOARDS_ENDPOINT + board.getId())
                 .then()
                 .extract().response());
-        assertThat(board.getName(), equalTo(randomStringForBoardName));
+        assertThat(board.getName(), equalTo(randomStr));
     }
 
 }

@@ -53,4 +53,12 @@ public class BasicServiceObject {
                 .expectStatusCode(HttpStatus.SC_OK)
                 .build();
     }
+
+    public static ResponseSpecification badResponseSpecification() {
+        return new ResponseSpecBuilder()
+                .expectContentType(ContentType.TEXT)
+                .expectResponseTime(lessThan(10000L))
+                .expectStatusCode(HttpStatus.SC_NOT_FOUND)
+                .build();
+    }
 }
