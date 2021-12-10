@@ -7,7 +7,7 @@ import static com.epam.tc.hw9.steps.BoardStep.createBoard;
 import static com.epam.tc.hw9.steps.BoardStep.deleteBoardById;
 import static com.epam.tc.hw9.steps.BoardStep.getBoard;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 import io.restassured.http.Method;
 import org.apache.commons.lang3.RandomStringUtils;

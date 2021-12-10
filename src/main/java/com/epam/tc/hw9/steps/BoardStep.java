@@ -11,7 +11,6 @@ import com.epam.tc.hw9.beans.TrelloBoard;
 import io.qameta.allure.Step;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
-
 import java.util.List;
 
 
@@ -47,8 +46,8 @@ public class BoardStep {
 
     @Step
     public static void deleteAllBoards() {
-        for (String boardId:getAllIdBoards()
-             ) {
+        for (String boardId : getAllIdBoards()
+        ) {
             deleteBoardById(boardId);
         }
     }

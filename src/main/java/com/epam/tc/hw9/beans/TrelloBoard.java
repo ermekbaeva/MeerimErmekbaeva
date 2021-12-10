@@ -188,7 +188,8 @@ public class TrelloBoard {
                 && this.idEnterprise.equals(rhs.idEnterprise))
                 && ((this.pinned == rhs.pinned) || ((this.pinned != null) && this.pinned.equals(rhs.pinned))
                 && ((this.url == rhs.url) || ((this.url != null) && this.url.equals(rhs.url))))
-                && ((this.shortUrl == rhs.shortUrl) || ((this.shortUrl != null) && this.shortUrl.equals(rhs.shortUrl)))));
+                && ((this.shortUrl == rhs.shortUrl) || ((this.shortUrl != null)
+                && this.shortUrl.equals(rhs.shortUrl)))));
     }
 
     @Override

@@ -2,8 +2,8 @@ package com.epam.tc.hw9.core;
 
 import static com.epam.tc.hw9.constants.Constants.CLOSED;
 import static com.epam.tc.hw9.constants.Constants.DEFAULT_LISTS;
-import static com.epam.tc.hw9.constants.Constants.DESC_DATA;
 import static com.epam.tc.hw9.constants.Constants.DESC;
+import static com.epam.tc.hw9.constants.Constants.DESC_DATA;
 import static com.epam.tc.hw9.constants.Constants.ID;
 import static com.epam.tc.hw9.constants.Constants.ID_ENTERPRISE;
 import static com.epam.tc.hw9.constants.Constants.ID_ORGANIZATION;
