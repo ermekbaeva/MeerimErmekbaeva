@@ -1,16 +1,16 @@
 package com.epam.tc.hw9.core;
 
+import static com.epam.tc.hw9.constants.Constants.CLOSED;
 import static com.epam.tc.hw9.constants.Constants.ID;
 import static com.epam.tc.hw9.constants.Constants.NAME;
 import static com.epam.tc.hw9.constants.Constants.POS;
 
-import com.epam.tc.hw9.beans.Lists;
+import com.epam.tc.hw9.beans.TrelloList;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.restassured.http.Method;
 import io.restassured.response.Response;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -24,9 +24,9 @@ public class ListServiceObject extends BasicServiceObject {
         return new ListRequestBuilder();
     }
 
-    public static Lists getListObject(Response response) {
+    public static TrelloList getListObject(Response response) {
         return new Gson().fromJson(response.asString()
-                .trim(), new TypeToken<List<Lists>>() {}
+                .trim(), new TypeToken<TrelloList>() {}
                 .getType());
     }
 
@@ -46,6 +46,11 @@ public class ListServiceObject extends BasicServiceObject {
 
         public ListRequestBuilder setName(String name) {
             parameters.put(NAME, name);
+            return this;
+        }
+
+        public ListRequestBuilder setClosed(String closed) {
+            parameters.put(CLOSED, closed);
             return this;
         }
 

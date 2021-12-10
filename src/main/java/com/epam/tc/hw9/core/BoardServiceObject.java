@@ -1,14 +1,16 @@
 package com.epam.tc.hw9.core;
 
 import static com.epam.tc.hw9.constants.Constants.CLOSED;
-import static com.epam.tc.hw9.constants.Constants.DESC;
+import static com.epam.tc.hw9.constants.Constants.DEFAULT_LISTS;
 import static com.epam.tc.hw9.constants.Constants.DESC_DATA;
+import static com.epam.tc.hw9.constants.Constants.DESC;
 import static com.epam.tc.hw9.constants.Constants.ID;
 import static com.epam.tc.hw9.constants.Constants.ID_ENTERPRISE;
 import static com.epam.tc.hw9.constants.Constants.ID_ORGANIZATION;
 import static com.epam.tc.hw9.constants.Constants.NAME;
+import static com.epam.tc.hw9.constants.Constants.PINNED;
 
-import com.epam.tc.hw9.beans.Board;
+import com.epam.tc.hw9.beans.TrelloBoard;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import io.restassured.http.Method;
@@ -27,9 +29,9 @@ public class BoardServiceObject extends BasicServiceObject {
         return new BoardRequestBuilder();
     }
 
-    public static Board getBoardObject(Response response) {
+    public static TrelloBoard getBoardObject(Response response) {
         return new Gson().fromJson(response.asString()
-                .trim(), new TypeToken<Board>() {}
+                .trim(), new TypeToken<TrelloBoard>() {}
                 .getType());
     }
 
@@ -74,6 +76,16 @@ public class BoardServiceObject extends BasicServiceObject {
 
         public BoardRequestBuilder setIdEnterprise(String idEnterprise) {
             parameters.put(ID_ENTERPRISE, idEnterprise);
+            return this;
+        }
+
+        public BoardRequestBuilder setPinned(String pinned) {
+            parameters.put(PINNED, pinned);
+            return this;
+        }
+
+        public BoardRequestBuilder setDefaultLists(String defaultLists) {
+            parameters.put(DEFAULT_LISTS, defaultLists);
             return this;
         }
 

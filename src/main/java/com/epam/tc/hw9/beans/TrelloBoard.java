@@ -2,7 +2,7 @@ package com.epam.tc.hw9.beans;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Board {
+public class TrelloBoard {
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -23,6 +23,17 @@ public class Board {
     private String url;
     @SerializedName("shortUrl")
     private String shortUrl;
+
+    public String getDefaultLists() {
+        return defaultLists;
+    }
+
+    public void setDefaultLists(String defaultLists) {
+        this.defaultLists = defaultLists;
+    }
+
+    @SerializedName("defaultLists")
+    private String defaultLists;
 
     public String getPinned() {
         return pinned;
@@ -107,7 +118,7 @@ public class Board {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Board.class.getName()).append('@')
+        sb.append(TrelloBoard.class.getName()).append('@')
                 .append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("id");
         sb.append('=');
@@ -162,22 +173,22 @@ public class Board {
         if (object == this) {
             return true;
         }
-        if (!(object instanceof Board)) {
+        if (!(object instanceof TrelloBoard)) {
             return false;
         }
-        Board rhs = ((Board) object);
+        TrelloBoard rhs = ((TrelloBoard) object);
         return ((((((((this.id == rhs.id) || ((this.id != null) && this.id.equals(rhs.id)))
-            && ((this.name == rhs.name) || ((this.name != null) && this.name.equals(rhs.name))))
-            && ((this.desc == rhs.desc) || ((this.desc != null) && this.desc.equals(rhs.desc))))
-            && ((this.descData == rhs.descData) || ((this.descData != null) && this.descData.equals(rhs.descData))))
-            && ((this.closed == rhs.closed) || ((this.closed != null) && this.closed.equals(rhs.closed))))
-            && ((this.idOrganization == rhs.idOrganization) || ((this.idOrganization != null)
-            && this.idOrganization.equals(rhs.idOrganization))))
-            && ((this.idEnterprise == rhs.idEnterprise) || ((this.idEnterprise != null)
-            && this.idEnterprise.equals(rhs.idEnterprise))
-            && ((this.pinned == rhs.pinned) || ((this.pinned != null) && this.pinned.equals(rhs.pinned))
-            && ((this.url == rhs.url) || ((this.url != null) && this.url.equals(rhs.url))))
-            && ((this.shortUrl == rhs.shortUrl) || ((this.shortUrl != null) && this.shortUrl.equals(rhs.shortUrl)))));
+                && ((this.name == rhs.name) || ((this.name != null) && this.name.equals(rhs.name))))
+                && ((this.desc == rhs.desc) || ((this.desc != null) && this.desc.equals(rhs.desc))))
+                && ((this.descData == rhs.descData) || ((this.descData != null) && this.descData.equals(rhs.descData))))
+                && ((this.closed == rhs.closed) || ((this.closed != null) && this.closed.equals(rhs.closed))))
+                && ((this.idOrganization == rhs.idOrganization) || ((this.idOrganization != null)
+                && this.idOrganization.equals(rhs.idOrganization))))
+                && ((this.idEnterprise == rhs.idEnterprise) || ((this.idEnterprise != null)
+                && this.idEnterprise.equals(rhs.idEnterprise))
+                && ((this.pinned == rhs.pinned) || ((this.pinned != null) && this.pinned.equals(rhs.pinned))
+                && ((this.url == rhs.url) || ((this.url != null) && this.url.equals(rhs.url))))
+                && ((this.shortUrl == rhs.shortUrl) || ((this.shortUrl != null) && this.shortUrl.equals(rhs.shortUrl)))));
     }
 
     @Override

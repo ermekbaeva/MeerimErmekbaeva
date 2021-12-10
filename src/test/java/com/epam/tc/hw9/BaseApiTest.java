@@ -1,24 +1,18 @@
 package com.epam.tc.hw9;
 
-import static com.epam.tc.hw9.steps.BoardStep.createBoard;
-import static com.epam.tc.hw9.steps.BoardStep.deleteBoard;
-import static com.epam.tc.hw9.steps.ListStep.createList;
+import static com.epam.tc.hw9.steps.BoardStep.deleteAllBoards;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import com.epam.tc.hw9.beans.TrelloBoard;
+import com.epam.tc.hw9.beans.TrelloList;
+import org.testng.annotations.AfterMethod;
 
 
 public class BaseApiTest {
-    protected static String boardId;
+    TrelloBoard board;
+    TrelloList list;
 
-    @BeforeClass
-    public void setUp() {
-        boardId = createBoard();
-        createList(boardId);
-    }
-
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
-        deleteBoard(boardId);
+        deleteAllBoards();
     }
 }

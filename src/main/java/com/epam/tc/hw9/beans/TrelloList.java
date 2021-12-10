@@ -2,7 +2,7 @@ package com.epam.tc.hw9.beans;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Lists {
+public class TrelloList {
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -77,7 +77,7 @@ public class Lists {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Board.class.getName()).append('@')
+        sb.append(TrelloBoard.class.getName()).append('@')
                 .append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("id");
         sb.append('=');
@@ -120,19 +120,19 @@ public class Lists {
         if (object == this) {
             return true;
         }
-        if (!(object instanceof Board)) {
+        if (!(object instanceof TrelloBoard)) {
             return false;
         }
-        Lists rhs = ((Lists) object);
+        TrelloList rhs = ((TrelloList) object);
         return ((((this.id == rhs.id) || ((this.id != null) && this.id.equals(rhs.id)))
-            && ((this.name == rhs.name) || ((this.name != null) && this.name.equals(rhs.name)))
-            && ((this.closed == rhs.closed) || ((this.closed != null) && this.closed.equals(rhs.closed)))
-            && ((this.pos == rhs.pos) || ((this.pos != null) && this.pos.equals(rhs.pos)))
-            && ((this.softLimit == rhs.softLimit) || ((this.softLimit != null)
-            && this.softLimit.equals(rhs.softLimit)))
-            && ((this.idBoard == rhs.idBoard) || ((this.idBoard != null) && this.idBoard.equals(rhs.idBoard)))
-            && ((this.subscribed == rhs.subscribed) || ((this.subscribed != null)
-            && this.subscribed.equals(rhs.subscribed)))));
+                && ((this.name == rhs.name) || ((this.name != null) && this.name.equals(rhs.name)))
+                && ((this.closed == rhs.closed) || ((this.closed != null) && this.closed.equals(rhs.closed)))
+                && ((this.pos == rhs.pos) || ((this.pos != null) && this.pos.equals(rhs.pos)))
+                && ((this.softLimit == rhs.softLimit) || ((this.softLimit != null)
+                && this.softLimit.equals(rhs.softLimit)))
+                && ((this.idBoard == rhs.idBoard) || ((this.idBoard != null) && this.idBoard.equals(rhs.idBoard)))
+                && ((this.subscribed == rhs.subscribed) || ((this.subscribed != null)
+                && this.subscribed.equals(rhs.subscribed)))));
     }
 
     @Override

@@ -10,10 +10,9 @@ public class Constants {
     public static final String CLOSED = "closed";
     public static final String ID_ORGANIZATION = "idOrganization";
     public static final String ID_ENTERPRISE = "idEnterprise";
+    public static final String DEFAULT_LISTS = "defaultLists";
+    public static final String PINNED = "pinned";
     public static final String PREFS = "prefs";
     public static final String POS = "pos";
-    public static final String NAME_FOR_BOARD = "Test name for board";
-    public static final String NAME_FOR_LIST = "Test name for list";
-    public static final String INCORRECT_NAME = "Incorrect test name";
     public static final String LIST_STATUS = "false";
 }
