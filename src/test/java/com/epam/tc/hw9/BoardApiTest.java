@@ -18,6 +18,20 @@ import org.testng.annotations.Test;
 public class BoardApiTest extends BaseApiTest {
 
     @Test
+    public void boardUpdateName() {
+        String randomStr = randomString();
+        board = createBoard();
+        board = getBoardObject(boardRequestBuilder()
+                .setMethod(Method.PUT)
+                .setName(randomStr)
+                .buildRequest()
+                .sendRequest(BOARDS_ENDPOINT + board.getId())
+                .then()
+                .extract().response());
+        assertThat(board.getName(), equalTo(randomStr));
+    }
+
+    @Test
     public void boardDeleteById() {
         board = createBoard();
         deleteBoardById(board.getId());
@@ -37,20 +51,6 @@ public class BoardApiTest extends BaseApiTest {
                 .then()
                 .extract().response());
         assertThat(board.getClosed(), equalTo("true"));
-    }
-
-    @Test
-    public void boardUpdateName() {
-        String randomStr = randomString();
-        board = createBoard();
-        board = getBoardObject(boardRequestBuilder()
-                .setMethod(Method.PUT)
-                .setName(randomStr)
-                .buildRequest()
-                .sendRequest(BOARDS_ENDPOINT + board.getId())
-                .then()
-                .extract().response());
-        assertThat(board.getName(), equalTo(randomStr));
     }
 
 }
