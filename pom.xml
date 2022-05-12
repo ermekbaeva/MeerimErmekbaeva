@@ -289,6 +289,7 @@
                     <installDirectory>${project.build.directory}</installDirectory>
                 </configuration>
             </plugin>
+                 
         </plugins>
     </build>
 </project>
