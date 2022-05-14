@@ -39,6 +39,7 @@
     </properties>
 
     <profiles>
+             
         <profile>
             <id>all-calculator-test-suite</id>
             <properties>
